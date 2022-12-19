@@ -1,0 +1,87 @@
+/**
+ * /*--------------------------------------------------------------
+ * # Skills
+ * --------------------------------------------------------------
+ *
+ * @format
+ */
+
+#skills {
+	background: linear-gradient(90deg, #616d71, #393d42);
+	color: white;
+}
+.skills .icon-box {
+	text-align: center;
+	padding: 80px 20px;
+	transition: all ease-in-out 0.3s;
+	box-shadow: 0px 2px 15px #e04f5f;
+}
+
+.skills .icon-box .icon {
+	margin: 0 auto;
+	width: 64px;
+	height: 64px;
+	background: transparent;
+	transition: all 0.3s ease-out 0s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	transform-style: preserve-3d;
+}
+
+.skills .icon-box .icon i {
+	color: #fff;
+	font-size: 28px;
+}
+
+.skills .icon-box .icon::before {
+	position: absolute;
+	content: "";
+	left: -8px;
+	top: -8px;
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	transition: all 0.3s ease-out 0s;
+	transform: translateZ(-1px);
+}
+
+.skills .icon-box h4 {
+	font-weight: 700;
+	margin-bottom: 15px;
+	font-size: 24px;
+}
+
+.skills .icon-box h4 a {
+	color: white;
+}
+
+.skills .icon-box p {
+	line-height: 24px;
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+.skills .icon-box:hover {
+	background: #e04f5f;
+	border-color: #e04f5f;
+	padding: 70px 20px 90px 20px;
+}
+
+.skills .icon-box:hover .icon {
+	background: #e04f5f;
+}
+
+.skills .icon-box:hover .icon i {
+	color: #cc1616;
+}
+
+.skills .icon-box:hover .icon::before {
+	background: transparent;
+}
+
+.skills .icon-box:hover h4 a,
+.skills .icon-box:hover p {
+	color: #fff;
+}

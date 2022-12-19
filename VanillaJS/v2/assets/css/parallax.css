@@ -1,0 +1,30 @@
+.parallax {
+	background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/parallax/parallax-1.jpg") fixed center center;
+	background-size: cover;
+	padding: 120px 0;
+}
+.parallax2 {
+	background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/parallax/parallax-2.jpg") fixed center center;
+	background-size: cover;
+	padding: 120px 0;
+}
+.parallax3 {
+	background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/parallax/parallax-3.jpg") fixed center center;
+	background-size: cover;
+	padding: 120px 0;
+}
+.parallax4 {
+	background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/parallax/parallax-4.jpg") fixed center center;
+	background-size: cover;
+	padding: 120px 0;
+}
+.parallax5 {
+	background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/parallax/parallax-5.jpg") fixed center center;
+	background-size: cover;
+	padding: 120px 0;
+}

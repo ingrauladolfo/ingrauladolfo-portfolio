@@ -1,0 +1,35 @@
+/**
+ * /*--------------------------------------------------------------
+ * # Companies
+ * --------------------------------------------------------------
+ *
+ * @format
+ */
+
+.companies {
+	background: linear-gradient(90deg, #616d71, #393d42);
+	padding: 15px 0;
+	text-align: center;
+}
+.companies h1 {
+	color: white;
+}
+
+.companies img {
+	width: 50%;
+	filter: grayscale(100);
+	transition: all 0.4s ease-in-out;
+	display: inline-block;
+	padding: 15px 0;
+}
+
+.companies img:hover {
+	filter: none;
+	transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+	.companies img {
+		width: 40%;
+	}
+}

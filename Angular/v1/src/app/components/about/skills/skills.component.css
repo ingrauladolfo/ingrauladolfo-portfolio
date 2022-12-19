@@ -1,0 +1,21 @@
+.background {
+  background: linear-gradient(90deg, #616d71, #393d42);
+}
+
+.uk-card, .uk-card-header, .uk-card-default, .uk-line {
+  background: linear-gradient(90deg, #616d71, #393d42) !important;
+}
+.uk-card-title{
+  font-size: 30px;
+  color:#f1f3f1;
+}
+h2{
+  font-size: 30px;
+  color:#f1f3f1;
+
+}
+p{
+  font-size: 20px;
+  color:#f1f3f1;
+  text-align: justify;
+}

@@ -1,0 +1,24 @@
+.background{
+    background: linear-gradient(90deg, #616d71,#393d42);
+}
+.carousel-item{
+    border: 1px solid #e04f5f;
+}
+.carousel-item img{
+    max-width: 400px;
+}
+.carousel-caption h3{
+    font-size: 25px;
+}
+.carmelita h3{
+    font-size: 25px;
+    margin-top: -210px;
+}
+.carmelita-english h3{
+    font-size: 25px;
+    margin-top: -250px;
+}
+.abuela h3{
+    font-size: 23px;
+    margin-top: -190px;
+}

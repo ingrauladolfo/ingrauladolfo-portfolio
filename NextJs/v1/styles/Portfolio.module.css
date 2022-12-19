@@ -1,0 +1,21 @@
+.tags {
+	text-align: center;
+	padding: 20px 0px;
+	background:#e04f5f;
+	background-attachment: fixed;
+}
+
+.tag {
+	outline: none;
+	border: none;
+	color: black;
+	margin: 0px 10px;
+	background:#e04f5f;
+	cursor: pointer;
+}
+
+.tag:hover {
+	background: black;
+	color:#e04f5f;
+	cursor: pointer;
+}

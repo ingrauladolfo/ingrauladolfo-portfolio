@@ -1,0 +1,10 @@
+.background{
+    background: linear-gradient(90deg, #616d71,#393d42);
+    width: 100%;
+    height: calc(100%-10px);
+    background-size: cover;
+
+}
+.card{
+    background: #e4e2e2;
+}

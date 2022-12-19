@@ -1,0 +1,9 @@
+.background{
+    background: linear-gradient(90deg, #616d71,#393d42) !important;
+}
+.uk-active a {
+    background: #e04f5f;
+}
+p{
+    color: white;
+}

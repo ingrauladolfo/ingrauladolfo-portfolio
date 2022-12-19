@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
+.text-typing {
+  padding:30px 30px;
+  background:transparent;
+  font-size:35px;
+  font-family:monospace;
+  border-radius:50px;
+  
+}
+.typewriter p {
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  animation: typing 15.0s steps(40, end), blink-caret .75s step-end infinite;
+  animation-iteration-count: infinite;
+  ;
+}
+/* The typing effect */
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
+}
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+
+.masthead {
+    padding-top: calc(6rem + 74px);
+    padding-bottom: 6rem;
+    background: linear-gradient(90deg, #616d71,#393d42);
+  }
+  .masthead .masthead-heading {
+    font-size: 2.75rem;
+    line-height: 2.75rem;
+    color:#f1f3f1;
+  }
+  .masthead .masthead-subheading {
+    font-size: 1.25rem;
+    color:#f1f3f1;
+  }
+  .masthead .masthead-avatar {
+    width: 15rem;
+    vertical-align: middle;
+  border-radius: 50%;
+  }
+  
+  @media (min-width: 992px) {
+    .masthead {
+      padding-top: calc(6rem + 104px);
+      padding-bottom: 6rem;
+      background: linear-gradient(90deg, #616d71,#393d42);
+    }
+    .masthead .masthead-heading {
+      font-size: 4rem;
+      line-height: 3.5rem;
+      color:#f1f3f1;
+    }
+    .masthead .masthead-subheading {
+      font-size: 1.5rem;
+      color:#f1f3f1;
+    }
+    .masthead .masthead-avatar {
+        width: 15rem;
+        vertical-align: middle;
+  border-radius: 50%;
+      }
+  }

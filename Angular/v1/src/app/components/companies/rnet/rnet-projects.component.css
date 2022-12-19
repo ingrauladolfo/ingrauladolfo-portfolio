@@ -1,0 +1,33 @@
+.background, mat-card{
+    background: linear-gradient(90deg, #616d71,#393d42);
+  }
+  .example-card {
+      max-width: 400px;
+    }
+    mat-card-title, mat-card-subtitle, p{
+        color: #f1f3f1;
+    }
+    .gagsa {
+      background-image: url('../../../../assets/images/companies/products-external-branches/rnet/gagsa-logo-header.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+  
+    }
+    .comoplast {
+      background-image: url('../../../../assets/images/companies/products-external-branches/rnet/comoplast-logo-header.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+  
+    }
+    a{
+      text-decoration: none;
+      background-color:#393d42;
+      color:#f1f3f1;
+    }
+    a:hover{
+      background-color: #616d71;
+      text-decoration: none;
+      color:#f1f3f1;
+    }
