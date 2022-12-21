@@ -39,7 +39,7 @@ const TagsContainer = ({ tags }) => {
 export default function Project() {
   const styles = useStyles()
   return (
-    <Grid container alignItems="center" justifyContent="center" spacing={3}>
+    <Grid container justifyContent="center" alignItems="center" spacing={3}>
       {projectsData.map(
         ({ index, title, description, imageUrl, imageAlt, tags, links }) => (
           <Grid item sx={{ paddingBottom: 3, marginBottom: 3 }} key={index}>

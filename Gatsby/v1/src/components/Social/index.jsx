@@ -1,25 +1,18 @@
-import { GitHub, LinkedIn } from '@mui/icons-material'
-import { Grid, IconButton, Link } from '@mui/material'
+import { Button, Divider, Grid, Link, Typography } from '@mui/material'
 import React from 'react'
-
-const socialItems = [
-  { icon: GitHub, url: 'https://github.com/ingrauladolfo', name: 'github' },
-  {
-    icon: LinkedIn,
-    url: 'https://www.linkedin.com/in/ingrauladolfotorresvargas/',
-    name: 'linkedin',
-  },
-]
+import { socialItems } from '../../data/socialItems'
 
 export default function Social({ direction }) {
   return (
-    <Grid container direction={direction || 'row'} spacing={1}>
+    <Grid container direction={direction || 'row'} spacing={2}>
       {socialItems.map((item) => (
         <Grid item key={item.name}>
-          <Link href={item.url} target="_blank">
-            <IconButton>
+          <Link href={item.url} target="_blank" underline="none">
+            <Button variant="outlined" color="primary">
               <item.icon />
-            </IconButton>
+              &nbsp;
+              <Typography>{item.name}</Typography>
+            </Button>
           </Link>
         </Grid>
       ))}
