@@ -14,11 +14,7 @@ import {
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import React, { useState } from 'react'
-const navigationLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Resume', href: '/cv/cv_rauladolfoenglish.pdf', download: true },
-]
+import { navigationLinks } from '../../data/navigationLinks'
 
 const useStyles = makeStyles((theme) => ({
   link: {

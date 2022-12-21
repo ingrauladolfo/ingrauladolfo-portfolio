@@ -57,7 +57,7 @@ export default function HeroSection() {
         <Grid
           className={styles.content}
           container
-          justifyContent="space-between"
+          justifyContent="center"
           alignItems="center"
         >
           <Zoom in={shouldShow}>
@@ -87,23 +87,11 @@ export default function HeroSection() {
                   }}
                 />
               </Typography>
-              <Box my={2}>
-                <Button
-                  href="mailto:ingrauladolfo.torresvargas@gmail.com "
-                  variant="outlined"
-                  color="secondary"
-                  target="_blank"
-                >
-                  Contact me
-                </Button>
+              <Box my={2} justifyContent="center" alignItems="center">
+                <Social />
               </Box>
             </Grid>
           </Zoom>
-          <Hidden xsDown>
-            <Grid item>
-              <Social direction="column" />
-            </Grid>
-          </Hidden>
         </Grid>
       </Container>
     </Paper>
