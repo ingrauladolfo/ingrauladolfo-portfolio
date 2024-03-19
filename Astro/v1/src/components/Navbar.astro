@@ -43,6 +43,7 @@ const navItems = [
       ))
     }
     <ThemeToggle />
+    <!-- <LanguagePicker /> -->
   </nav>
 </header>
 
@@ -56,9 +57,9 @@ const navItems = [
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500");
+              item.classList.add("dark:text-red-500");
             } else {
-              item.classList.remove("text-yellow-500");
+              item.classList.remove("dark:text-red-500");
             }
           });
         }
@@ -98,36 +99,6 @@ const navItems = [
   @keyframes nav-shadown {
     to {
       @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
-    }
-  }
-
-  /* Estilos para el navbar en pantallas pequeñas */
-  @media screen and (max-width: 768px) {
-    .navbar-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: #333;
-      padding: 10px 0;
-      list-style: none;
-      margin: 0;
-      display: none;
-    }
-
-    .navbar-menu li {
-      padding: 10px 0;
-    }
-
-    .navbar-menu li a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 20px;
-      display: block;
-    }
-
-    .navbar-toggle:checked + .navbar-burger + .navbar-menu {
-      display: block;
     }
   }
 </style>

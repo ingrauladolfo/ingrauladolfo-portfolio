@@ -4,6 +4,8 @@ import Hero from "@/sections/Hero/Hero.astro";
 import Skills from "@/sections/Skills/Skills.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import Gears from "@/assets/icons/Gears.astro";
+import ProfileCheck from "@/assets/icons/ProfileCheck.astro";
+import About from "@/sections/About/AboutMe.astro";
 ---
 
 <Layout
@@ -22,6 +24,15 @@ import Gears from "@/assets/icons/Gears.astro";
         Habilidades
       </h2>
       <Skills />
+    </SectionContainer>
+    <SectionContainer id="about-me">
+      <h2
+        class="text-5xl justify-center align-middle dark:text-red-400 light:text-black-400 font-semibold mb-6 flex gap-x-3 items-center"
+      >
+        <ProfileCheck class="size-7" />
+        Sobre mi
+      </h2>
+      <About />
     </SectionContainer>
   </main>
 </Layout>
