@@ -1,0 +1,26 @@
+---
+import SKILLS from "@/assets/data/SkillsData.json";
+---
+
+<div class="h-full">
+  <div
+    class="h-fit grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 w-full gap-4"
+  >
+    {
+      SKILLS.map((skill) => (
+        <div class="flex gap-4 h-fit transition-all">
+          <span class="flex flex-col gap-2 items-center">
+            <img
+              class="hover:scale-95 transition-all hover:shadow-md rounded-3xl"
+              height="250"
+              width="250"
+              src={skill.link}
+              alt={skill.alt}
+            />
+            <h3>{skill.name}</h3>
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>

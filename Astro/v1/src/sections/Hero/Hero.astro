@@ -1,0 +1,73 @@
+---
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/assets/icons/LinkedIn.astro";
+import MailIcon from "@/assets/icons/Mail.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import CV from "@/assets/icons/CV.astro";
+import GitHub from "@/assets/icons/GitHub.astro";
+const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-red-400 dark:hover:text-red-400 `;
+const personalImageAlt = "I.S.C. Raúl Adolfo Torres Vargas";
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-16"
+      src="/about/about.webp"
+      alt={personalImageAlt}
+    />
+    <a
+      href="https://linkedin.com/in/midudev"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </div>
+  <div class="w-fit h-fit">
+    <div>
+      <h1
+        class=`${textEffect} text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white text-balance`
+      >
+        Raúl Adolfo
+      </h1>
+      <h1
+        class=`${textEffect} text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white text-balance`
+      >
+        Torres Vargas
+      </h1>
+    </div>
+
+    <span
+      class="dark:text-red-400 light:text-black-400 text-xl w-full text-start"
+      >Desarrollador de Software</span
+    >
+  </div>
+  <p
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-red-400 [&>strong]:text-red-800 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    +5 años de experiencia. <strong
+      >Desarrollador de Software y fundador de ESDMX</strong
+    > de Lázaro Cárdenas Michoacán 🇲🇽. Especializado en el desarrollo de aplicaciones
+    web únicas con JavaScript principalmente como Desarrollador Frontend.
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:ingrauladolfo.torresvargas@gmail.com">
+      <MailIcon class="size-4" />
+      Contáctame
+    </SocialPill>
+    <SocialPill href="https://linkedin.com/in/ingrauladolfotorresvargas">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/ingrauladolfo">
+      <GitHub class="size-4" />
+      Github
+    </SocialPill>
+    <SocialPill href="/about.webp" download>
+      <CV class="size-4" />
+      CV
+    </SocialPill>
+  </nav>
+</div>

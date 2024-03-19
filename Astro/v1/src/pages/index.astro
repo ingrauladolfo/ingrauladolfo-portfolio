@@ -1,38 +1,27 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import GitHubIcon from "../assets/icons/SocialNetworks/GitHub.astro";
-import LinkedInIcon from "../assets/icons/SocialNetworks/LinkedIn.astro";
-import Link from "../components/reusable/Link.astro";
-import Date from "../components/Date.astro";
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/sections/Hero/Hero.astro";
+import Skills from "@/sections/Skills/Skills.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import Gears from "@/assets/icons/Gears.astro";
 ---
 
-<Layout title="Pronto nos veremos">
-  <main
-    class="max-w-md w-full mx-auto p-6 bg-transparent rounded-lg shadow-lg text-center"
-  >
-    <img src="/img/comingSoon.webp" alt="Logo" class="mx-auto mb-4" />
-    <h1 class="text-3xl font-semibold text-white mb-4">
-      ¡Pronto estaremos aquí!
-    </h1>
-
-    <footer class="flex items-end justify-center mt-4 gap-x-4">
-      <div
-        class="max-w-md w-full mx-auto p-6 bg-transparent rounded-lg shadow-lg text-center"
+<Layout
+  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia"
+  description="Contrata a Raúl Adolfo Torres Vargas para crear tu aplicación web o móvil. Desarrollador Web, Fundador de ESDMX y Creador de Contenido. Especializado en crear aplicaciones únicas."
+>
+  <main>
+    <SectionContainer class="py-44 pb-32">
+      <Hero />
+    </SectionContainer>
+    <SectionContainer id="skills">
+      <h2
+        class="text-5xl justify-center align-middle dark:text-red-400 light:text-black-400 font-semibold mb-6 flex gap-x-3 items-center"
       >
-        <h2 class="text-2xl font-semibold text-white text-center mb-4">
-          Por lo mientras, les dejo mis redes sociales
-        </h2>
-        <div class="flex justify-center space-x-4">
-          <Link href="https://github.com/ingrauladolfo">
-            <GitHubIcon class="size-6" />
-            GitHub
-          </Link>
-          <Link href="https://linkedin/in/ingrauladolfotorresvargas">
-            <LinkedInIcon class="size-6" />
-            LinkedIn
-          </Link>
-        </div>
-      </div>
-    </footer>
+        <Gears class="size-7" />
+        Habilidades
+      </h2>
+      <Skills />
+    </SectionContainer>
   </main>
 </Layout>

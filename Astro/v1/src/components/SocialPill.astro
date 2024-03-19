@@ -1,0 +1,31 @@
+<a
+  {...Astro.props}
+  target="_blank"
+  rel="noopener noreferrer"
+  role="link"
+  class="inline-flex
+    items-center
+    justify-center
+    gap-2 px-4 py-1
+    text-gray-800
+    transition
+    border
+    border-[#b84242]
+    rounded-full
+    focus-visible:ring-yellow-500/80
+    text-md
+    group
+    max-w-fit
+    focus:outline-none
+    focus-visible:outline-none
+    focus-visible:ring
+    focus-visible:ring-white
+    focus-visible:ring-offset-2
+    active:bg-black
+    hover:text-white
+    hover:bg-gradient-to-r from-[#b84242] to-[#d20e0e]
+    dark:bg-[#292D32]
+    dark:text-white"
+>
+  <slot />
+</a>

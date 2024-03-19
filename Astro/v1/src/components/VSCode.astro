@@ -1,0 +1,93 @@
+---
+import VSCodeIcon from "@/assets/icons/VSCode.astro";
+import AstroIcon from "@/assets/icons/AstroIcon.astro";
+import TailwindIcon from "@/assets/icons/Tailwind.astro";
+import TypeScriptIcon from "@/assets/icons/TypeScript.astro";
+import ArrowDownIcon from "@/assets/icons/ArrowDown.astro";
+import Link from "@/components/Link.astro";
+const TAGS = [
+  {
+    name: "Astro",
+    class: "bg-black text-white",
+    icon: AstroIcon,
+  },
+  {
+    name: "Tailwind CSS",
+    class: "bg-[#6d28d9] text-white",
+    icon: TailwindIcon,
+  },
+  {
+    name: "TypeScript",
+    class: "bg-[#3178c6] text-white",
+    icon: TypeScriptIcon,
+  },
+];
+---
+
+<div class="flex flex-col w-full max-w-[800px] pb-50">
+  <div
+    class="w-full h-8 bg-[#1E2227] justify-between flex items-center px-2 rounded-t-lg"
+  >
+    <div class="flex items-center gap-2">
+      <VSCodeIcon class="size-4" />
+      <h2 class="text-gray-400 font-medium">Portfolio</h2>
+    </div>
+    <div class="flex gap-2">
+      <div class="w-2 h-2 rounded-full bg-[#FF605C]"></div><div
+        class="w-2 h-2 rounded-full bg-[#FFBD44]"
+      >
+      </div><div class="w-2 h-2 rounded-full bg-[#00CA4E]"></div>
+    </div>
+  </div>
+  <div class="flex">
+    <div
+      class="h-72 md:h-[450px] w-full overflow-auto scrollbar"
+      style=" overflow-x: none;  color: rgb(171, 178, 191); background: rgb(40, 44, 52);"
+    >
+      <div class="white-space: pre;">
+        <h2
+          class="text-4xl mt-2 text-center font-bold tracking-tight text-gray-800 sm:text-3xl dark:text-white text-balance"
+        >
+          🚀 Acerca de este proyecto
+        </h2>
+        <div class="flex flex-wrap mt-2">
+          <h3 class="text-xl font-semibold text-white text-center mb-4">
+            Portfolio desarrollado con
+            <div
+              class="max-w-md w-full mx-auto p-2 bg-transparent rounded-lg shadow-lg text-center"
+            >
+              <ul class="flex flex-row mb-2 gap-x-auto">
+                {
+                  TAGS.map((tag) => (
+                    <li>
+                      <span
+                        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                      >
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </h3>
+        </div>
+        <footer class="flex items-end justify-center gap-x-4 mt-[-20px]">
+          <div
+            class="mx-auto p-2 bg-transparent rounded-lg shadow-lg text-center"
+          >
+            <h4 class="text-2xl font-semibold text-white text-center mb-4">
+              Más información
+            </h4>
+            <div class="flex justify-center space-x-4">
+              <Link href="/#sobre-mi">
+                <ArrowDownIcon class="size-6" />
+              </Link>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
