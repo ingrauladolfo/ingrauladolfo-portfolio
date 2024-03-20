@@ -1,0 +1,88 @@
+---
+import LinkInline from "@/components/LinkInline.astro";
+import LeftArrow from "@/assets/icons/LeftArrow.astro";
+import CheckIcon from "@/assets/icons/Check.astro";
+import CloseIcon from "@/assets/icons/Close.astro";
+interface Props {
+  title: string;
+  company: string;
+  description: string;
+  reasonLeaving?: string;
+  workHere: boolean;
+  link?: string;
+  startDate: string;
+  finishDate?: string;
+}
+const {
+  title,
+  company,
+  description,
+  reasonLeaving,
+  workHere,
+  link,
+  startDate,
+  finishDate,
+} = Astro.props;
+---
+
+<div class="timeline-middle flex items-center space-x-2">
+  {
+    workHere && !reasonLeaving ? (
+      <>
+        <CheckIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
+          Trabajo aquí
+        </span>
+      </>
+    ) : (
+      <>
+        <CloseIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
+          No trabajo aquí
+        </span>
+      </>
+    )
+  }
+</div>
+<div class="timeline-start md:text-start mb-10 mx-auto">
+  {
+    finishDate ? (
+      <time class="font-bold text-[1em]italic dark:text-white">
+        {startDate} - {finishDate}
+      </time>
+    ) : (
+      <>
+        <time class="font-extrabold text-[1em] italic dark:text-white">
+          {startDate} - actualmente
+        </time>
+      </>
+    )
+  }
+  <br />
+  {
+    reasonLeaving && (
+      <span class="text-purple-800  dark:text-blue-400 text-[1.2em] font-extrabold">
+        Razón de salida: {reasonLeaving}
+      </span>
+    )
+  }
+  <div class="text-xl font-semibold text-green-700 dark:text-green-500">
+    {title}
+  </div>
+  <div class="text-lg font-bold text-yellow-700 dark:text-yellow-500">
+    {company}
+  </div>
+  <p class="text-normal font-mono text-black dark:text-white">
+    {description}
+  </p>
+  <br />
+  {
+    link && (
+      <LinkInline href={link} target="_blank">
+        Proyecto principal con posible rediseño.
+        <LeftArrow />
+      </LinkInline>
+    )
+  }
+</div>
+<hr class="mb-4 border-blue-900 dark:border-blue-900 border-2" />

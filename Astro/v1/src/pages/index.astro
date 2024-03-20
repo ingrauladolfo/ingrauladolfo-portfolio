@@ -1,37 +1,81 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Hero from "@/sections/Hero/Hero.astro";
-import Skills from "@/sections/Skills/Skills.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
-import Gears from "@/assets/icons/Gears.astro";
-import ProfileCheck from "@/assets/icons/ProfileCheck.astro";
+import Hero from "@/sections/Hero/Hero.astro";
+import Stack from "@/sections/Stack/Stack.astro";
 import About from "@/sections/About/AboutMe.astro";
+import Career from "@/sections/Career/Career.astro";
+import ProfileCheckIcon from "@/assets/icons/ProfileCheck.astro";
+import GearsIcon from "@/assets/icons/Gears.astro";
+import CareerIcon from "@/assets/icons/Career.astro";
+
+function calculateYearsExperience(startedDate: string): number {
+  // Convertir la fecha de inicio a un objeto Date
+  const dateStructure = startedDate.split("/");
+  const day = parseInt(dateStructure[0], 10);
+  const month = parseInt(dateStructure[1], 10) - 1; // Restar 1 porque los monthes en JavaScript comienzan desde 0
+  const year = parseInt(dateStructure[2], 10);
+  const startedDateObj = new Date(year, month, day);
+
+  // Obtener la fecha actual
+  const actualDate = new Date();
+
+  // Obtener el año actual y el año de la fecha de inicio
+  const actualYear = actualDate.getFullYear();
+  const startedYear = startedDateObj.getFullYear();
+
+  // Calcular la diferencia de años
+  const yearsExperience = actualYear - startedYear;
+
+  // Retornar la diferencia
+  return yearsExperience;
+}
+const startedDate = "05/01/2019";
+const yearsExperience = calculateYearsExperience(startedDate);
 ---
 
 <Layout
-  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia"
+  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experience"
   description="Contrata a Raúl Adolfo Torres Vargas para crear tu aplicación web o móvil. Desarrollador Web, Fundador de ESDMX y Creador de Contenido. Especializado en crear aplicaciones únicas."
 >
   <main>
-    <SectionContainer class="py-44 pb-32">
+    <SectionContainer class="py-44 pb-22">
       <Hero />
     </SectionContainer>
-    <SectionContainer id="skills">
+    <SectionContainer class="mt-[-30px]" id="experience">
       <h2
-        class="text-5xl justify-center align-middle dark:text-red-400 light:text-black-400 font-semibold mb-6 flex gap-x-3 items-center"
+        class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
       >
-        <Gears class="size-7" />
-        Habilidades
+        <CareerIcon class="size-12" />
+        Trayectoria y Estudios
       </h2>
-      <Skills />
+      <h3 class="dark:text-white text-gray-800 text-center text-3xl">
+        Un poco de mis estudios y Experience laboral
+      </h3>
+      <Career />
+    </SectionContainer>
+    <SectionContainer class="mt-[-30px]" id="stack">
+      <h2
+        class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
+      >
+        <GearsIcon class="size-12" />
+        Mi Stack
+      </h2>
+      <h3 class="dark:text-white text-gray-800 text-center text-3xl mb-[40px]">
+        Mi stack de mis {yearsExperience} años de experiencia
+      </h3>
+      <Stack />
     </SectionContainer>
     <SectionContainer id="about-me">
       <h2
-        class="text-5xl justify-center align-middle dark:text-red-400 light:text-black-400 font-semibold mb-6 flex gap-x-3 items-center"
+        class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
       >
-        <ProfileCheck class="size-7" />
+        <ProfileCheckIcon class="size-12" />
         Sobre mi
       </h2>
+      <h3 class="dark:text-white text-gray-800 text-center text-3xl">
+        Un poco acerca de mi
+      </h3>
       <About />
     </SectionContainer>
   </main>

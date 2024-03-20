@@ -1,0 +1,108 @@
+---
+import ProfesionalItem from "./ProfesionalItem.astro";
+import LinkInline from "@/components/LinkInline.astro";
+import LeftArrowIcon from "@/assets/icons/LeftArrow.astro";
+import StudiesItem from "./StudiesItem.astro";
+const CAREER = [
+  {
+    startDate: "23/09/2022",
+    title: "Consultor y desarrollador Microsoft",
+    company: "Teia Consultoría",
+    description:
+      "Actualmente me dedico al mantenimiento de proyectos de declaraciones anuales para personas físicas y morales, así como a la obtención de certificaciones en varias tecnologías de Microsoft mediante cursos especializados.",
+    workHere: true,
+  },
+  {
+    startDate: "09/08/2022",
+    finishDate: "16/08/2022",
+    title: "Desarrollador React",
+    company: "Promo Espacio (externo traído por THTech)",
+    description:
+      "Desarrollé el módulo 'Bitácora' para exportar a Excel los spots y anuncios realizados durante el mes para diversos clientes y sus sucursales.",
+    reasonLeaving: "el proyecto fue cancelado por falta de presupuesto",
+    workHere: false,
+    link: "https://promoespacio.com.mx/sac/Login_local2.asp",
+  },
+  {
+    startDate: "11/01/2022",
+    finishDate: "30/06/2022",
+    title: "Desarrollador React",
+    company: "ONIBEX",
+    description:
+      "Creación de Fleter (anteriormente Plug & Deliver), una herramienta web y móvil para la gestión y localización de pedidos enviados por fletes. Desarrollé varios módulos conectados a API REST para esta aplicación",
+    reasonLeaving: "Término de contrato",
+    workHere: false,
+    link: "https://www.fleter.io/",
+  },
+];
+const STUDIES = [
+  {
+    startDate: "01 de noviembre de 2021",
+    finishDate: "01 de febrero de 2022",
+    title: "Desarrollador NodeJS y Frontend",
+    name: "TzuzulCode",
+    bootcamp: true,
+    type: "Bootcamp",
+    link: "https://tzuzulcode.com",
+  },
+  {
+    startDate: "01 de marzo de 2021",
+    finishDate: "01 de febrero de 2022",
+    title: "Desarrollo Web Full-Stack y Ciencias de la Computación",
+    name: "ACADEMLO",
+    bootcamp: true,
+    type: "Bootcamp",
+    link: "https://www.academlo.com/curso-programacion-web-full-stack",
+  },
+  {
+    startDate: "8 de agosto de 2016",
+    finishDate: "10 de diciembre de 2020",
+    status: "Pasante (Graduado)",
+    title: "Ingeniería en Sistemas Computacionales",
+    bootcamp: false,
+    type: "Universidad",
+    name: "Universidad Vasco de Quiroga campus Santa María (Morelia)",
+    link: "https://www.uvaq.edu.mx/ciencias-exactas-e-ingenierias/ing-en-sistemas-y-seguridad-informatica/",
+  },
+];
+---
+
+<div class="grid gap-8 lg:grid-cols-2">
+  <ol
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
+      ¿Dónde estudié?
+    </h3>
+    {
+      STUDIES.map((school) => (
+        <li>
+          <StudiesItem {...school} />
+        </li>
+      ))
+    }
+  </ol>
+  <ol
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
+      Mi experiencia profesional
+    </h3>
+    {
+      CAREER.map((experience) => (
+        <li>
+          <ProfesionalItem {...experience} />
+        </li>
+      ))
+    }
+    <div class="flex justify-center items-center">
+      <LinkInline
+        href="/career-detailed/"
+        class="flex items-center space-x-2 text-lg font-medium text-red-500 dark:text-yellow-200 dark:hover:text-red-300 hover:text-yellow-700"
+      >
+        Más experiencia
+        <LeftArrowIcon />
+      </LinkInline>
+    </div>
+  </ol>
+</div>

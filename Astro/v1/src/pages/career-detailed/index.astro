@@ -1,0 +1,64 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ProfesionalItem from "./ProfesionalItem.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import LinkInline from "@/components/LinkInline.astro";
+
+const CAREER = [
+  {
+    startDate: "23/09/2022",
+    title: "Consultor y desarrollador Microsoft",
+    company: "Teia Consultoría",
+    description:
+      "Actualmente me dedico al mantenimiento de proyectos de declaraciones anuales para personas físicas y morales, así como a la obtención de certificaciones en varias tecnologías de Microsoft mediante cursos especializados.",
+    workHere: true,
+  },
+  {
+    startDate: "09/08/2022",
+    finishDate: "16/08/2022",
+    title: "Desarrollador React",
+    company: "Promo Espacio (externo traído por THTech)",
+    description:
+      "Desarrollé el módulo 'Bitácora' para exportar a Excel los spots y anuncios realizados durante el mes para diversos clientes y sus sucursales.",
+    reasonLeaving: "el proyecto fue cancelado por falta de presupuesto",
+    workHere: false,
+    link: "https://promoespacio.com.mx/sac/Login_local2.asp",
+  },
+  {
+    startDate: "11/01/2022",
+    finishDate: "30/06/2022",
+    title: "Desarrollador React",
+    company: "ONIBEX",
+    description:
+      "Creación de Fleter (anteriormente Plug & Deliver), una herramienta web y móvil para la gestión y localización de pedidos enviados por fletes. Desarrollé varios módulos conectados a API REST para esta aplicación",
+    reasonLeaving: "Término de contrato",
+    workHere: false,
+    link: "https://www.fleter.io/",
+  },
+];
+---
+
+<Layout
+  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia"
+  description="Contrata a Raúl Adolfo Torres Vargas para crear tu aplicación web o móvil. Desarrollador Web, Fundador de ESDMX y Creador de Contenido. Especializado en crear aplicaciones únicas."
+>
+  <main>
+    <SectionContainer class="py-10 pb-10">
+      <ol
+        class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+      >
+        <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
+          Mi experiencia profesional
+        </h3>
+        {
+          CAREER.map((experience) => (
+            <li>
+              <ProfesionalItem {...experience} />
+            </li>
+          ))
+        }
+        <LinkInline href="/">Volver</LinkInline>
+      </ol>
+    </SectionContainer>
+  </main>
+</Layout>
