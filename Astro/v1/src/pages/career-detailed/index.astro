@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import ProfesionalItem from "./ProfesionalItem.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import LinkInline from "@/components/LinkInline.astro";
+import LeftArrowIcon from "@/assets/icons/LeftArrow.astro";
+import Career from "@/assets/icons/Career.astro";
 
 const CAREER = [
   {
@@ -11,6 +13,14 @@ const CAREER = [
     company: "Teia Consultoría",
     description:
       "Actualmente me dedico al mantenimiento de proyectos de declaraciones anuales para personas físicas y morales, así como a la obtención de certificaciones en varias tecnologías de Microsoft mediante cursos especializados.",
+    workHere: true,
+  },
+  {
+    startDate: "05/01/2019",
+    title: "Desarrollador y Programador Freelance, y Fundador",
+    company: "Easy Software Design México",
+    description:
+      "Como freelancer, lidero un equipo de desarrolladores web mientras busco nuevos proyectos.",
     workHere: true,
   },
   {
@@ -30,25 +40,90 @@ const CAREER = [
     title: "Desarrollador React",
     company: "ONIBEX",
     description:
-      "Creación de Fleter (anteriormente Plug & Deliver), una herramienta web y móvil para la gestión y localización de pedidos enviados por fletes. Desarrollé varios módulos conectados a API REST para esta aplicación",
-    reasonLeaving: "Término de contrato",
+      "Durante mi estancia de 5 meses y medio en la empresa, contribuí en la búsqueda de tecnologías frontend para la primera fase de Fleter (anteriormente Plug & Deliver). Además, desarrollé módulos con conexión a API REST para esta herramienta web y móvil, que facilita la gestión y localización de pedidos enviados por fletes.",
+    reasonLeaving: "Finalizó la primera fase del proyecto y mi contrato",
     workHere: false,
     link: "https://www.fleter.io/",
+  },
+  {
+    startDate: "02/06/2021",
+    finishDate: "14/01/2022",
+    title: "Desarrollador JavaScript",
+    company: "Softwareland",
+    description:
+      "Me encargué del desarrollo y mantenimiento del CRM, incluyendo la creación de nuevas funcionalidades y un 'Coming soon' para RS Viajes. Proporcioné soporte técnico y desarrollé nuevas características para los CRM y sitios web de varios clientes de la empresa",
+    reasonLeaving:
+      "Me trasladé a una nueva empresa por una oferta laboral más atractiva económicamente.",
+    workHere: false,
+    link: "https://rsviajes.com/",
+  },
+  {
+    startDate: "22/07/2020 ",
+    finishDate: "14/05/2021",
+    title: "Desarrollador y Programador Web",
+    company: "Rompopes y Bebidas Mexicanas (ROBEMEX)",
+    description:
+      "Creé y mantuve sitios web de marcas propias, brindando soporte técnico a los colaboradores.",
+    reasonLeaving: "Finalización del contrato",
+    workHere: false,
+    link: "https://rompopecarmelita.com/",
+    link2: "https://robemex.com/",
+  },
+  {
+    startDate: "16/04/2020",
+    finishDate: "16/junio/2020",
+    title: "Docente en Lenguaje de Programación Python",
+    company: "LatCode",
+    description:
+      "Impartí clases de Python en YouTube para trainees en la industria 4.0.",
+    reasonLeaving: "El proyecto concluyó inesperadamente sin clarificación.",
+    workHere: false,
+  },
+  {
+    startDate: "06/05/2019",
+    finishDate: "31/07/2019",
+    title: "Desarrollador y Programador Web (practicante)",
+    company: "rNet - Soluciones informáticas",
+    description:
+      "Como practicante, realicé mantenimiento, creación y rediseño de sitios web para clientes.",
+    reasonLeaving:
+      "Dejé mi posición para realizar mi servicio social en el Servicio de Administración Tributaria (SAT).",
+    workHere: false,
+    link: "http://www.gagsa.mx/",
+    link2: "https://www.comoplast.com.mx/",
+  },
+  {
+    startDate: "05/01/2019",
+    finishDate: "28/03/2019",
+    title: "Desarrollador y Programador Web (practicante)",
+    company: "Revista Tourista Vive México",
+    description:
+      "Aprendí a diseñar sitios web mientras trabajaba como practicante para el cliente 'Mendoza's Restaurant'.",
+    reasonLeaving:
+      "Me mudé a una nueva empresa debido a una oferta laboral más atractiva económicamente, mientras continuaba mi práctica profesional.",
+    workHere: false,
+    link: "https://mendozasrestaurant.com/",
   },
 ];
 ---
 
 <Layout
-  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia"
+  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia | Experiencia Profesional Detallada"
   description="Contrata a Raúl Adolfo Torres Vargas para crear tu aplicación web o móvil. Desarrollador Web, Fundador de ESDMX y Creador de Contenido. Especializado en crear aplicaciones únicas."
 >
   <main>
-    <SectionContainer class="py-10 pb-10">
+    <SectionContainer class="py-20 pb-20">
+      <h2
+        class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
+      >
+        <Career class="size-12" />
+        Trayectoria
+      </h2>
       <ol
         class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
       >
         <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
-          Mi experiencia profesional
+          Mi experiencia profesional a detalle
         </h3>
         {
           CAREER.map((experience) => (
@@ -57,8 +132,12 @@ const CAREER = [
             </li>
           ))
         }
-        <LinkInline href="/">Volver</LinkInline>
+        <div class="flex justify-center items-center">
+          <LinkInline href="/">
+            <LeftArrowIcon /> Volver
+          </LinkInline>
+        </div>
       </ol>
     </SectionContainer>
-  </main>
-</Layout>
+  </main></Layout
+>

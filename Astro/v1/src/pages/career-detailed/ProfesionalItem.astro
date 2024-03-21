@@ -1,6 +1,6 @@
 ---
 import LinkInline from "../../components/LinkInline.astro";
-import LeftArrow from "@/assets/icons/LeftArrow.astro";
+import RightArrowIcon from "@/assets/icons/RightArrow.astro";
 import CheckIcon from "@/assets/icons/Check.astro";
 import CloseIcon from "@/assets/icons/Close.astro";
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
   reasonLeaving?: string;
   workHere: boolean;
   link?: string;
+  link2?: string;
   startDate: string;
   finishDate?: string;
 }
@@ -20,6 +21,7 @@ const {
   reasonLeaving,
   workHere,
   link,
+  link2,
   startDate,
   finishDate,
 } = Astro.props;
@@ -29,16 +31,16 @@ const {
   {
     workHere && !reasonLeaving ? (
       <>
-        <CheckIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
-        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
-          Trabajo aquí
+        <CheckIcon class="text-purple-800 dark:text-yellow-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-yellow-400 text-[1.3em] font-bold">
+          Trabajo aquí actualmente
         </span>
       </>
     ) : (
       <>
-        <CloseIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
-        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
-          No trabajo aquí
+        <CloseIcon class="text-purple-800 dark:text-yellow-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-yellow-400 text-[1.3em] font-bold">
+          Ya no trabajo aquí
         </span>
       </>
     )
@@ -61,7 +63,7 @@ const {
   <br />
   {
     reasonLeaving && (
-      <span class="text-purple-800  dark:text-blue-400 text-[1.2em] font-extrabold">
+      <span class="text-purple-800  dark:text-sky-400 text-[1.2em] font-extrabold">
         Razón de salida: {reasonLeaving}
       </span>
     )
@@ -77,12 +79,34 @@ const {
   </p>
   <br />
   {
-    link && (
+    link && link2 ? (
+      <div class="flex flex-col md:flex-row justify-between space-x-0 md:space-x-4">
+        <LinkInline
+          href={link}
+          target="_blank"
+          class="flex justify-center items-center mb-4 md:mb-0"
+        >
+          Proyecto principal con posible rediseño.
+          <RightArrowIcon />
+        </LinkInline>
+        <LinkInline
+          href={link}
+          target="_blank"
+          class="flex justify-center items-center"
+        >
+          Proyecto secundario con posible rediseño.
+          <RightArrowIcon />
+        </LinkInline>
+      </div>
+    ) : link ? (
       <LinkInline href={link} target="_blank">
         Proyecto principal con posible rediseño.
-        <LeftArrow />
+        <RightArrowIcon />
       </LinkInline>
+    ) : (
+      " "
     )
   }
+
+  <hr class="mb-4 border-blue-900 dark:border-blue-900 border-2" />
 </div>
-<hr class="mb-4 border-blue-900 dark:border-blue-900 border-2" />

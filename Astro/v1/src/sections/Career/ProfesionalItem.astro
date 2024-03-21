@@ -1,6 +1,6 @@
 ---
 import LinkInline from "@/components/LinkInline.astro";
-import LeftArrow from "@/assets/icons/LeftArrow.astro";
+import RightArrowIcon from "@/assets/icons/RightArrow.astro";
 import CheckIcon from "@/assets/icons/Check.astro";
 import CloseIcon from "@/assets/icons/Close.astro";
 interface Props {
@@ -29,16 +29,16 @@ const {
   {
     workHere && !reasonLeaving ? (
       <>
-        <CheckIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
-        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
-          Trabajo aquí
+        <CheckIcon class="text-purple-800 dark:text-yellow-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-yellow-400 text-[1.3em] font-bold">
+          Trabajo aquí actualmente
         </span>
       </>
     ) : (
       <>
-        <CloseIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
-        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
-          No trabajo aquí
+        <CloseIcon class="text-purple-800 dark:text-yellow-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-yellow-400 text-[1.3em] font-bold">
+          Ya no trabajo aquí
         </span>
       </>
     )
@@ -61,7 +61,7 @@ const {
   <br />
   {
     reasonLeaving && (
-      <span class="text-purple-800  dark:text-blue-400 text-[1.2em] font-extrabold">
+      <span class="text-purple-800  dark:text-sky-400 text-[1.2em] font-extrabold">
         Razón de salida: {reasonLeaving}
       </span>
     )
@@ -80,7 +80,7 @@ const {
     link && (
       <LinkInline href={link} target="_blank">
         Proyecto principal con posible rediseño.
-        <LeftArrow />
+        <RightArrowIcon />
       </LinkInline>
     )
   }

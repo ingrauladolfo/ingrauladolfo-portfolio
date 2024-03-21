@@ -1,7 +1,7 @@
 ---
 import ProfesionalItem from "./ProfesionalItem.astro";
 import LinkInline from "@/components/LinkInline.astro";
-import LeftArrowIcon from "@/assets/icons/LeftArrow.astro";
+import RightArrowIcon from "@/assets/icons/RightArrow.astro";
 import StudiesItem from "./StudiesItem.astro";
 const CAREER = [
   {
@@ -10,6 +10,14 @@ const CAREER = [
     company: "Teia Consultoría",
     description:
       "Actualmente me dedico al mantenimiento de proyectos de declaraciones anuales para personas físicas y morales, así como a la obtención de certificaciones en varias tecnologías de Microsoft mediante cursos especializados.",
+    workHere: true,
+  },
+  {
+    startDate: "05/01/2019",
+    title: "Desarrollador y Programador Freelance, y Fundador",
+    company: "Easy Software Design México",
+    description:
+      "Como freelancer, lidero un equipo de desarrolladores web mientras busco nuevos proyectos.",
     workHere: true,
   },
   {
@@ -22,17 +30,6 @@ const CAREER = [
     reasonLeaving: "el proyecto fue cancelado por falta de presupuesto",
     workHere: false,
     link: "https://promoespacio.com.mx/sac/Login_local2.asp",
-  },
-  {
-    startDate: "11/01/2022",
-    finishDate: "30/06/2022",
-    title: "Desarrollador React",
-    company: "ONIBEX",
-    description:
-      "Creación de Fleter (anteriormente Plug & Deliver), una herramienta web y móvil para la gestión y localización de pedidos enviados por fletes. Desarrollé varios módulos conectados a API REST para esta aplicación",
-    reasonLeaving: "Término de contrato",
-    workHere: false,
-    link: "https://www.fleter.io/",
   },
 ];
 const STUDIES = [
@@ -101,7 +98,7 @@ const STUDIES = [
         class="flex items-center space-x-2 text-lg font-medium text-red-500 dark:text-yellow-200 dark:hover:text-red-300 hover:text-yellow-700"
       >
         Más experiencia
-        <LeftArrowIcon />
+        <RightArrowIcon />
       </LinkInline>
     </div>
   </ol>
