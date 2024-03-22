@@ -3,22 +3,22 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
   {
-    icon: "Experiencia",
+    title: "Experiencia",
     label: "experience",
     url: "/#experience",
   },
   {
-    icon: "Proyectos",
-    label: "proyectos",
+    title: "Proyectos",
+    label: "projects",
     url: "/#projects",
   },
   {
-    icon: "Stack",
+    title: "Stack",
     label: "stack",
     url: "/#stack",
   },
   {
-    icon: "Sobre mi",
+    title: "Sobre mi",
     label: "about-me",
     url: "/#about-me",
   },
@@ -29,21 +29,20 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-green-500 dark:text-yellow-500 justify-center items-center"
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-300"
+          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
         >
-          {link.icon}
+          {link.title}
         </a>
       ))
     }
     <ThemeToggle />
-    <!-- <LanguagePicker /> -->
   </nav>
 </header>
 
@@ -57,9 +56,9 @@ const navItems = [
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500", "dark:text-white");
+              item.classList.add("text-yellow-500");
             } else {
-              item.classList.remove("text-yellow-500", "dark:text-white");
+              item.classList.remove("text-yellow-500");
             }
           });
         }
@@ -97,22 +96,8 @@ const navItems = [
   }
 
   @keyframes nav-shadown {
-    from {
-      @apply shadow-lg ring-1 backdrop-blur  dark:bg-blue-800  ring-white/10;
-    }
     to {
-      @apply shadow-lg ring-1 backdrop-blur bg-blue-800  dark:bg-blue-800  ring-white/10;
-    }
-  }
-  @media (prefers-color-scheme: ligth) {
-    nav {
-      background-color: transparent; /* Cambia el color de fondo oscuro según sea necesario */
-    }
-  }
-  /* Estilos para el tema oscuro */
-  @media (prefers-color-scheme: dark) {
-    nav {
-      background-color: #1a202c; /* Cambia el color de fondo oscuro según sea necesario */
+      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
     }
   }
 </style>

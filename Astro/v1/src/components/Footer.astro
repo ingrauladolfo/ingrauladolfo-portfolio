@@ -1,5 +1,27 @@
 ---
 const currentYear = new Date().getFullYear();
+const navItems = [
+  {
+    icon: "Experiencia",
+    label: "experience",
+    url: "/#experience",
+  },
+  {
+    icon: "Proyectos",
+    label: "proyectos",
+    url: "/#projects",
+  },
+  {
+    icon: "Stack",
+    label: "stack",
+    url: "/#stack",
+  },
+  {
+    icon: "Sobre mi",
+    label: "about-me",
+    url: "/#about-me",
+  },
+];
 ---
 
 <footer
@@ -21,14 +43,17 @@ const currentYear = new Date().getFullYear();
     <ul
       class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
     >
-      <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
-      </li>
-      <li>
-        <a id="contacto" href="mailto:miduga@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
-      </li>
+      {
+        navItems.map((link) => (
+          <a
+            class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-300"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.icon}
+          </a>
+        ))
+      }
     </ul>
   </div>
 </footer>

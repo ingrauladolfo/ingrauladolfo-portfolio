@@ -5,9 +5,11 @@ import Hero from "@/sections/Hero/Hero.astro";
 import Stack from "@/sections/Stack/Stack.astro";
 import About from "@/sections/About/AboutMe.astro";
 import Career from "@/sections/Career/Career.astro";
+import Projects from "@/sections/Projects/Projects.astro";
 import ProfileCheckIcon from "@/assets/icons/ProfileCheck.astro";
 import GearsIcon from "@/assets/icons/Gears.astro";
 import CareerIcon from "@/assets/icons/Career.astro";
+import CodeIcon from "@/assets/icons/Code.astro";
 
 function calculateYearsExperience(startedDate: string): number {
   // Convertir la fecha de inicio a un objeto Date
@@ -50,9 +52,22 @@ const yearsExperience = calculateYearsExperience(startedDate);
         Trayectoria y Estudios
       </h2>
       <h3 class="dark:text-white text-gray-800 text-center text-3xl">
-        Un poco de mis estudios y Experience laboral
+        Un poco de mis Estudios y Experiencia Laboral
       </h3>
       <Career />
+    </SectionContainer>
+    <SectionContainer class="mt-[-30px]" id="projects">
+      <h2
+        class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
+      >
+        <CodeIcon class="size-12" />
+        Proyectos
+      </h2>
+      <h3 class="dark:text-white text-gray-800 text-center text-3xl">
+        Esta sección tiene Proyectos de ejemplo, estamos reconstruyendo el
+        portafolio, te pedimos que estés al pendiente de los cambios
+      </h3>
+      <Projects />
     </SectionContainer>
     <SectionContainer class="mt-[-30px]" id="stack">
       <h2
@@ -71,10 +86,10 @@ const yearsExperience = calculateYearsExperience(startedDate);
         class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
       >
         <ProfileCheckIcon class="size-12" />
-        Sobre mi
+        Sobre mí
       </h2>
       <h3 class="dark:text-white text-gray-800 text-center text-3xl">
-        Un poco acerca de mi
+        Un poco acerca de mí
       </h3>
       <About />
     </SectionContainer>
