@@ -1,127 +1,116 @@
 ---
-import LinkInline from "@/components/LinkInline.astro";
-import DeployIcon from "@/assets/icons/Deploy.astro";
+import NextJS from "@/assets/icons/sections/Projects/Tech/NextJSIcon.astro";
+import Tailwind from "@/assets/icons/sections/Projects/Tech/TailwindIcon.astro";
+import Link from "@/assets/icons/sections/Projects/LinkIcon.astro";
+import LinkButton from "../../components/sections/Projects/LinkButton.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import GitHubIcon from "@/assets/icons/sections/Projects/GitHubIcon.astro";
+import RightArrowIcon from "@/assets/icons/sections/Experience/RightArrowIcon.astro";
+type tLang = (str: any) => any;
+const lang = getLangFromUrl(Astro.url);
+const t: tLang = useTranslations(lang);
+const { currentLocale } = Astro;
+type TagType = {
+  name: string;
+  class: string;
+  icon: (_props: Record<string, any>) => any;
+};
+type TagsType = {
+  [key: string]: TagType;
+};
+const TAGS: TagsType = {
+  nextjs: {
+    name: "Next.js",
+    class: "bg-[#000] text-white dark:bg-white dark:text-[#000]",
+    icon: NextJS,
+  },
+  tailwindcss: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+};
+interface ProjectType {
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  github?: string;
+}
+const PROJECTS: ProjectType[] = t("projects");
 ---
 
-<div class="flex flex-col gap-y-16 mt-[40px]">
-  <article
-    class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
-  >
-    <div class="w-full md:w-1/2">
-      <div
-        class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
-      >
-        <img
-          alt="Recién llegado vs 5 años en Nueva Zelanda"
-          class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-          src="https://porfolio.dev/projects/svgl.webp"
-        />
-        <div
-          class="absolute w-full text-white h-full top-0 left-0 z-20 gap-2 group-hover:backdrop-blur-sm hidden group-hover:flex items-center justify-center bg-black/40"
-        >
-          <LinkInline
-            class="flex gap-1 items-center font-bold transition-all hover:scale-110"
-          >
-            <DeployIcon class="size-[1.5em]" />
-            &nbsp;Deploy
-          </LinkInline>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full md:w-1/2 md:max-w-lg">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Holi</h3>
-      <div class="flex flex-wrap mt-2">
-        <ul class="flex flex-row mb-2 gap-x-2">
-          <li>
-            <span class={`flex gap-x-2 rounded-full text-xs py-1 px-2 `}>
-              holi
-              <!-- <tag.icon class="size-4" /> -->
-              <!-- {tag.name} -->
-            </span>
-          </li>
-        </ul>
-
-        <div class="mt-2 text-gray-700 dark:text-gray-400">holi</div>
-        <footer class="flex items-end justify-start mt-4 gap-x-4">
-          <!-- {
-            github && (
-              <LinkButton href={github}>
-                <GitHub class="size-6" />
-                Code
-              </LinkButton>
-            )
-          }
-          {
-            link && (
-              <LinkButton href={link}>
-                <Link class="size-4" />
-                Preview
-              </LinkButton>
-            )
-          } -->
-        </footer>
-      </div>
-    </div>
-  </article>
-  <article
-    class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
-  >
-    <div class="w-full md:w-1/2">
-      <div
-        class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
-      >
-        <img
-          alt="Recién llegado vs 5 años en Nueva Zelanda"
-          class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-          src="https://porfolio.dev/projects/svgl.webp"
-        />
-        <div
-          class="absolute w-full text-white h-full top-0 left-0 z-20 gap-2 group-hover:backdrop-blur-sm hidden group-hover:flex items-center justify-center bg-black/40"
-        >
-          <LinkInline
-            class="flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110"
-          >
-            <DeployIcon class="size-[1.5em]" />
-            &nbsp;Deploy
-          </LinkInline>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full md:w-1/2 md:max-w-lg">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Holi</h3>
-      <div class="flex flex-wrap mt-2">
-        <ul class="flex flex-row mb-2 gap-x-2">
-          <li>
-            <span class={`flex gap-x-2 rounded-full text-xs py-1 px-2 `}>
-              holi
-              <!-- <tag.icon class="size-4" /> -->
-              <!-- {tag.name} -->
-            </span>
-          </li>
-        </ul>
-
-        <div class="mt-2 text-gray-700 dark:text-gray-400">holi</div>
-        <footer class="flex items-end justify-start mt-4 gap-x-4">
-          <!-- {
-            github && (
-              <LinkButton href={github}>
-                <GitHub class="size-6" />
-                Code
-              </LinkButton>
-            )
-          }
-          {
-            link && (
-              <LinkButton href={link}>
-                <Link class="size-4" />
-                Preview
-              </LinkButton>
-            )
-          } -->
-        </footer>
-      </div>
-    </div>
-  </article>
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.slice(0, 3).map(
+      ({ image, imageAlt, title, description, tags, link, github }) => (
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img
+                alt={imageAlt}
+                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                loading="eager"
+                src={image}
+              />
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-wrap mb-2 gap-x-2">
+                {tags.map((item) => {
+                  const tag: TagType = TAGS[item];
+                  if (tag) {
+                    return (
+                      <li>
+                        <span
+                          class={`flex gap-x-2 mt-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                        >
+                          <tag.icon class="size-4" />
+                          {tag.name}
+                        </span>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+              <div class="mt-2 text-gray-700 dark:text-gray-400">
+                {description}
+              </div>
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <LinkButton href={github}>
+                    <GitHubIcon class="size-6" />
+                    {currentLocale === "en" ? "Code" : "Código"}
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={link}>
+                    <Link class="size-4" />
+                    {currentLocale === "en" ? "Deploy" : "Demo"}
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      )
+    )
+  }
+  <div class="flex justify-center items-center">
+    <LinkButton
+      href={currentLocale === "en"
+        ? "/en/projects-detailed"
+        : "/projects-detailed"}
+      class="flex items-center space-x-2 text-red-500 dark:text-yellow-200 dark:hover:text-red-300 hover:text-yellow-700"
+    >
+      {currentLocale === "en" ? "More projects" : "Más proyectos"}
+      <RightArrowIcon />
+    </LinkButton>
+  </div>
 </div>

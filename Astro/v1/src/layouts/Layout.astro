@@ -1,8 +1,8 @@
 ---
 import "@fontsource-variable/onest";
 
-import Navbar from "@/components/Navbar.astro";
-import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -11,13 +11,11 @@ interface Props {
 }
 
 const { description, title } = Astro.props;
-// const { currentLocale } = Astro;
+const { currentLocale } = Astro;
 ---
 
 <!doctype html>
-<html lang="es">
-  <!-- lang={currentLocale} -->
-
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -35,7 +33,7 @@ const { description, title } = Astro.props;
       dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
     </div>
-    <Navbar />
+    <Header />
     <slot />
     <Footer />
     <style is:global>

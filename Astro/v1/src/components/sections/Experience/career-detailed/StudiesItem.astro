@@ -1,0 +1,73 @@
+---
+import RightArrowIcon from "@/assets/icons/sections/Experience/RightArrowIcon.astro";
+import LinkInline from "../LinkInline.astro";
+import BootcampIcon from "@/assets/icons/sections/Experience/BootcampIcon.astro";
+import SchoolIcon from "@/assets/icons/sections/Experience/SchoolIcon.astro";
+
+interface Props {
+  startDate: string;
+  finishDate?: string;
+  title: string;
+  name: string;
+  bootcamp: boolean;
+  link: string;
+  status?: string;
+  type: string;
+}
+const { startDate, finishDate, title, name, bootcamp, link, status, type } =
+  Astro.props;
+const { currentLocale } = Astro;
+const studentType = currentLocale === "en" ? `and I'm` : "y soy";
+---
+
+<div class="timeline-middle flex items-center space-x-2">
+  {
+    bootcamp && !status ? (
+      <>
+        <BootcampIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
+          {type}
+        </span>
+      </>
+    ) : (
+      <>
+        <SchoolIcon class="text-purple-800 dark:text-purple-400 h-8 w-8 font-bold" />
+        <span class="text-purple-800 dark:text-purple-400 text-[1.2em] font-bold">
+          {type} {studentType} {status}
+        </span>
+      </>
+    )
+  }
+</div>
+<div class="timeline-start md:text-start mb-10 mx-auto">
+  {
+    finishDate ? (
+      <time class="font-bold text-[1em]italic dark:text-white">
+        {startDate} - {finishDate}
+      </time>
+    ) : (
+      <>
+        <time class="font-extrabold text-[1em] italic dark:text-white">
+          {startDate} - actualmente
+        </time>
+      </>
+    )
+  }
+  <br />
+  <div class="text-xl font-semibold text-green-700 dark:text-green-500">
+    {title}
+  </div>
+  <div class="text-lg font-bold text-yellow-700 dark:text-yellow-500">
+    {name}
+  </div>
+  <br />
+  {
+    link && (
+      <LinkInline href={link} target="_blank">
+        {currentLocale === "en" ? "More info" : "Más información"}
+        <RightArrowIcon />
+      </LinkInline>
+    )
+  }
+</div>
+<hr class="mb-4 border-blue-900 dark:border-blue-900 border-2" />

@@ -1,75 +1,69 @@
 ---
-import Badge from "@/components/Badge.astro";
-import LinkedInIcon from "@/assets/icons/LinkedIn.astro";
+import Badge from "../../components/sections/Hero/Badge.astro";
 import MailIcon from "@/assets/icons/Mail.astro";
-import SocialPill from "@/components/SocialPill.astro";
-import CV from "@/assets/icons/CV.astro";
-import GitHub from "@/assets/icons/GitHub.astro";
-const textEffect = `transition-all hover:text-5xl md:hover:text-6xl cursor-default hover:text-red-800 dark:hover:text-yellow-400 `;
+import SocialPill from "../../components/sections/Hero/SocialPill.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import LinkedInIcon from "@/assets/icons/sections/Hero/LinkedInIcon.astro";
+import GitHubIcon from "@/assets/icons/sections/Hero/GitHubIcon.astro";
+import CVIcon from "@/assets/icons/sections/Hero/CVIcon.astro";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { currentLocale } = Astro;
 const personalImageAlt = "I.S.C. Raúl Adolfo Torres Vargas";
+const spanText =
+  currentLocale === "en"
+    ? "Software Frontend Developer"
+    : "Desarrollador de Software Frontend";
+const cvLink = currentLocale === "en" ? "/cv/en/RATV.pdf" : "/cv/es/RATV.pdf";
+const cvDownload =
+  currentLocale === "en"
+    ? "Raúl Adolfo Torres Vargas - English.pdf"
+    : "Raúl Adolfo Torres Vargas - Español.pdf";
 ---
 
 <div class="max-w-xl">
-  <div class="flex gap-6 mb-6">
+  <div class="flex gap-4 mb-4">
     <img
       class="rounded-full shadow-lg size-16"
-      height="96"
-      width="96"
-      src="/hero/about.webp"
+      src="/hero/me.webp"
       alt={personalImageAlt}
     />
     <a
-      href="https://linkedin.com/in/midudev"
+      href="https://www.linkedin.com/in/ingrauladolfotorresvargas/"
       target="_blank"
       rel="noopener"
       class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible para trabajar</Badge>
-    </a>
-  </div>
-  <div class="w-fit h-fit">
-    <div>
-      <h1
-        class=`${textEffect} text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white text-balance`
-      >
-        Raúl Adolfo
-      </h1>
-      <h1
-        class=`${textEffect} text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white text-balance`
-      >
-        Torres Vargas
-      </h1>
-    </div>
-
-    <span
-      class="dark:text-red-400 light:text-black-400 text-xl w-full text-start"
-      >Desarrollador de Software</span
+      ><Badge>{t("hero.badge")}</Badge></a
     >
   </div>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-300 [&>strong]:text-red-500 [&>strong]:font-semibold dark:text-gray-300"
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    +5 años de experiencia. <strong
-      >Desarrollador de Software y fundador de ESDMX</strong
-    > originario de Lázaro Cárdenas Michoacán 🇲🇽 . Especializado en el desarrollo
-    de aplicaciones web únicas con JavaScript como Frontend.
-  </p>
+    {t("hero.title")}
+  </h1>
+  <span class="dark:text-red-400 light:text-black-400 text-xl w-full text-start"
+    >{spanText}</span
+  >
+  <p
+    set:html={t("hero.bio")}
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+  />
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:ingrauladolfo.torresvargas@gmail.com">
+      <MailIcon class="size-4" />
+      {t("hero.mail")}
+    </SocialPill>
+    <SocialPill href="https://linkedin.com/in/ingrauladolfotorresvargas">
+      <LinkedInIcon class="size-4" />
+      {t("hero.linkedin")}
+    </SocialPill>
+    <SocialPill href="https://github.com/ingrauladolfo">
+      <GitHubIcon class="size-4" />
+      {t("hero.github")}
+    </SocialPill>
+    <SocialPill href={cvLink} download={cvDownload}>
+      <CVIcon class="size-4" />
+      {t("hero.cv")}
+    </SocialPill>
+  </nav>
 </div>
-<nav class="flex flex-wrap gap-4 mt-8">
-  <SocialPill href="mailto:ingrauladolfo.torresvargas@gmail.com">
-    <MailIcon class="size-4" />
-    Contáctame
-  </SocialPill>
-  <SocialPill href="https://linkedin.com/in/ingrauladolfotorresvargas">
-    <LinkedInIcon class="size-4" />
-    LinkedIn
-  </SocialPill>
-  <SocialPill href="https://github.com/ingrauladolfo">
-    <GitHub class="size-4" />
-    Github
-  </SocialPill>
-  <SocialPill href="/about.webp" download>
-    <CV class="size-4" />
-    CV
-  </SocialPill>
-</nav>

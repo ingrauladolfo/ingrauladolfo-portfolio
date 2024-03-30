@@ -1,18 +1,18 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import SectionContainer from "@/components/sections/index/SectionContainer.astro";
-import Experience from "@/sections/Experience/Experience.astro";
-import Projects from "@/sections/Projects/Projects.astro";
-import AboutMe from "@/sections/AboutMe/AboutMe.astro";
-import Hero from "@/sections/Hero/Hero.astro";
-import ProfileCheck from "@/assets/icons/sections/index/ProfileCheck.astro";
-import Briefcase from "@/assets/icons/Briefcase.astro";
-import CodeIcon from "@/assets/icons/sections/Projects/CodeIcon.astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import Stack from "@/sections/Stack/Stack.astro";
+import Layout from "../../layouts/Layout.astro";
+import AboutMe from "../../sections/AboutMe/AboutMe.astro";
+import Briefcase from "../../assets/icons/Briefcase.astro";
+import CodeIcon from "../../assets/icons/sections/Projects/CodeIcon.astro";
+import Experience from "../../sections/Experience/Experience.astro";
+import ProfileCheck from "../../assets/icons/sections/index/ProfileCheck.astro";
+import Projects from "../../sections/Projects/Projects.astro";
+import SectionContainer from "../../components/sections/index/SectionContainer.astro";
+import Hero from "../../sections/Hero/Hero.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 type tLang = (str: any) => any;
 const lang = getLangFromUrl(Astro.url);
 const t: tLang = useTranslations(lang);
+const { currentLocale } = Astro;
 ---
 
 <Layout title={t("layout.title")} description={t("layout.description")}>
@@ -39,15 +39,6 @@ const t: tLang = useTranslations(lang);
         {t("projects.title")}
       </h2>
       <Projects />
-    </SectionContainer>
-    <SectionContainer id="stack">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-      >
-        <CodeIcon class="size-7" />
-        {t("stack.title")}
-      </h2>
-      <Stack />
     </SectionContainer>
     <SectionContainer id="sobre-mi">
       <h2

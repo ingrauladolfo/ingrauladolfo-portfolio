@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: "https://ingrauladolfo-portfolio.vercel.app/",
+  site: "https://porfolio.dev/",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
