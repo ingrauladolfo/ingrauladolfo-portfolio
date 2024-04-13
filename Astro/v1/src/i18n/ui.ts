@@ -240,7 +240,7 @@ export const ui = {
         title: "Jazmín Creaciones - Sitio web oficial",
         description:
           "Explora el sitio web oficial de Jazmín Creaciones, una empresa en Morelia, Michoacán, especializada en amigurumis únicos. Descubre nuestra colección artesanal y tecnológica, desarrollada con React/Vite y styled-components",
-        yearOfDeveloped: "Se desarrolló el 24 de Junio de 2024",
+        yearOfDeveloped: "Se desarrolló el 23 de Noviembre de 2023",
         image: "/projects/freelancerESDMX/jazminCreaciones-oficial.webp",
         imageAlt: "Jazmín Creaciones - Sitio web oficial",
         tags: ["react", "vite", "styledComponents"],
@@ -460,7 +460,7 @@ export const ui = {
         title: "Jazmín Creaciones - Official website",
         description:
           "Explore the official website of Jazmín Creaciones, a company in Morelia, Michoacán, specialized in unique amigurumis. Discover our artisanal and technological collection, developed with React/Vite and styled-components",
-        yearOfDeveloped: "Developed on June 24, 2024",
+        yearOfDeveloped: "Developed on November 23, 2023",
         image: "/projects/freelancerESDMX/jazminCreaciones-oficial.webp",
         imageAlt: "Jazmín Creaciones - Official Website",
         tags: ["react", "vite", "styledComponents"],
