@@ -7,6 +7,8 @@ import SectionContainer from "@/components/sections/index/SectionContainer.astro
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 const { currentLocale } = Astro;
+const careerDetailedText =
+  currentLocale === "es" ? "Experiencia Detallada" : "Experience Detailed";
 type tLang = (str: any) => any;
 const lang = getLangFromUrl(Astro.url);
 const t: tLang = useTranslations(lang);
@@ -24,21 +26,27 @@ type Experience = {
 const EXP: Experience[] = t("exp");
 ---
 
-<Layout title={t("layout.title")} description={t("layout.description")}>
+<Layout
+  title={t("layout.title")}
+  description={`${t("layout.description")}| ${careerDetailedText}`}
+>
   <main>
     <SectionContainer class="py-20 pb-20">
       <h2
         class="text-5xl justify-center align-middle dark:text-white text-gray-800 font-semibold mb-6 flex gap-x-3 items-center"
       >
         <Briefcase class="size-12" />
-        Trayectoria
+        {t("exp.title")}
       </h2>
       <ol
         class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
       >
-        <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
-          Mi experiencia profesional a detalle
-        </h3>
+        <div class="flex justify-center items-center">
+          <LinkInline href="/">
+            <LeftArrowIcon />
+            {currentLocale !== "en" ? "Volver" : "Go back"}
+          </LinkInline>
+        </div>
         {
           EXP.map((experience) => (
             <li>
@@ -47,7 +55,7 @@ const EXP: Experience[] = t("exp");
           ))
         }
         <div class="flex justify-center items-center">
-          <LinkInline href={currentLocale !== "en" ? "/" : "/en"}>
+          <LinkInline href="/">
             <LeftArrowIcon />
             {currentLocale !== "en" ? "Volver" : "Go back"}
           </LinkInline>

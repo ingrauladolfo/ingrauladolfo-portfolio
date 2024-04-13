@@ -7,6 +7,8 @@ import SectionContainer from "@/components/sections/index/SectionContainer.astro
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 const { currentLocale } = Astro;
+const careerDetailedText =
+  currentLocale === "es" ? "Experiencia Detallada" : "Experience Detailed";
 type tLang = (str: any) => any;
 const lang = getLangFromUrl(Astro.url);
 const t: tLang = useTranslations(lang);
@@ -25,8 +27,8 @@ const EXP: Experience[] = t("exp");
 ---
 
 <Layout
-  title="Porfolio I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de experiencia | Experiencia Profesional Detallada"
-  description="Contrata a Raúl Adolfo Torres Vargas para crear tu aplicación web o móvil. Desarrollador Web, Fundador de ESDMX y Creador de Contenido. Especializado en crear aplicaciones únicas."
+  title={t("layout.title")}
+  description={`${t("layout.description")}| ${careerDetailedText}`}
 >
   <main>
     <SectionContainer class="py-20 pb-20">

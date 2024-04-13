@@ -1,11 +1,21 @@
 ---
-import NextJS from "@/assets/icons/sections/Projects/Tech/NextJSIcon.astro";
-import Tailwind from "@/assets/icons/sections/Projects/Tech/TailwindIcon.astro";
 import Link from "@/assets/icons/sections/Projects/LinkIcon.astro";
-import LinkButton from "../../components/sections/Projects/LinkButton.astro";
+import LinkButton from "@/components/sections/Projects/LinkButton.astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import GitHubIcon from "@/assets/icons/sections/Projects/GitHubIcon.astro";
-import RightArrowIcon from "@/assets/icons/sections/Experience/RightArrowIcon.astro";
+import RightArrowIcon from "@/assets/icons/sections/Projects/RightArrowIcon.astro";
+import DeployIcon from "@/assets/icons/sections/Projects/DeployIcon.astro";
+import {
+  NextJSIcon,
+  ReactIcon,
+  ViteIcon,
+  styledComponentsIcon,
+  CSS3Icon,
+  HTMLIcon,
+  JavaScriptIcon,
+  BootstrapIcon,
+} from "@/components/sections/Projects/ExportsIcons";
+import LinkInlineProjectImage from "@/components/sections/Projects/LinkInlineProjectImage.astro";
 type tLang = (str: any) => any;
 const lang = getLangFromUrl(Astro.url);
 const t: tLang = useTranslations(lang);
@@ -19,15 +29,50 @@ type TagsType = {
   [key: string]: TagType;
 };
 const TAGS: TagsType = {
+  react: {
+    name: "React",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: ReactIcon,
+  },
+  vite: {
+    name: "Vite",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: ViteIcon,
+  },
+  styledComponents: {
+    name: "styled-components",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: styledComponentsIcon,
+  },
   nextjs: {
     name: "Next.js",
-    class: "bg-[#000] text-white dark:bg-white dark:text-[#000]",
-    icon: NextJS,
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: NextJSIcon,
   },
-  tailwindcss: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
+  // tailwindcss: {
+  //   name: "Tailwind CSS",
+  //   class: "bg-[#003159] text-white",
+  //   icon: TailwindIcon,
+  // },
+  css: {
+    name: "CSS",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: CSS3Icon,
+  },
+  html: {
+    name: "HTML",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: HTMLIcon,
+  },
+  javascript: {
+    name: "JavaScript",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: JavaScriptIcon,
+  },
+  bootstrap: {
+    name: "Bootstrap",
+    class: "bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e]",
+    icon: BootstrapIcon,
   },
 };
 interface ProjectType {
@@ -38,6 +83,7 @@ interface ProjectType {
   tags: string[];
   link: string;
   github?: string;
+  yearOfDeveloped?: string;
 }
 const PROJECTS: ProjectType[] = t("projects");
 ---
@@ -45,20 +91,56 @@ const PROJECTS: ProjectType[] = t("projects");
 <div class="flex flex-col gap-y-16">
   {
     PROJECTS.slice(0, 3).map(
-      ({ image, imageAlt, title, description, tags, link, github }) => (
+      ({
+        image,
+        imageAlt,
+        title,
+        description,
+        tags,
+        link,
+        github,
+        yearOfDeveloped,
+      }) => (
         <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
           <div class="w-full md:w-1/2">
             <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-              <img
-                alt={imageAlt}
-                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                loading="eager"
-                src={image}
-              />
+              <div class="relative group-hover:translate-x-2 transition-all group-hover:-translate-y-2 before:origin-top-left before:rotate-45 z-10 w-full">
+                <img
+                  alt={imageAlt}
+                  class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                  loading="eager"
+                  src={image}
+                />
+
+                <div class="absolute w-full text-white  h-full top-0 left-0 z-20 gap-2 group-hover:backdrop-blur-sm hidden group-hover:flex items-center justify-center bg-black/40">
+                  <LinkInlineProjectImage
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110"
+                  >
+                    <DeployIcon size="1rem" /> Deploy
+                  </LinkInlineProjectImage>
+                  &nbsp;
+                  <LinkInlineProjectImage
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex gap-1 items-center font-bold hover:text-yellow-400 transition-all hover:scale-110"
+                  >
+                    <GitHubIcon size="1rem" /> GitHub
+                  </LinkInlineProjectImage>
+                </div>
+              </div>
             </div>
+            <span
+              class={` text-center flex gap-x-2 mt-2 rounded-full text-x py-1 px-2 bg-[#1e1e1e] text-white dark:bg-white dark:text-[#1e1e1e] `}
+            >
+              {title}
+            </span>
           </div>
           <div class="w-full md:w-1/2 md:max-w-lg">
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
               {title}
             </h3>
             <div class="flex flex-wrap mt-2">
@@ -79,20 +161,23 @@ const PROJECTS: ProjectType[] = t("projects");
                   }
                 })}
               </ul>
-              <div class="mt-2 text-gray-700 dark:text-gray-400">
+              <h4 class="text-lg mt-2 text-red-600 dark:text-yellow-300">
+                {yearOfDeveloped}
+              </h4>
+              <h5 class="text-stretch mt-2 text-gray-700 dark:text-gray-400">
                 {description}
-              </div>
+              </h5>
               <footer class="flex items-end justify-start mt-4 gap-x-4">
                 {github && (
                   <LinkButton href={github}>
                     <GitHubIcon class="size-6" />
-                    {currentLocale === "en" ? "Code" : "Código"}
+                    GitHub
                   </LinkButton>
                 )}
                 {link && (
                   <LinkButton href={link}>
                     <Link class="size-4" />
-                    {currentLocale === "en" ? "Deploy" : "Demo"}
+                    Link
                   </LinkButton>
                 )}
               </footer>
