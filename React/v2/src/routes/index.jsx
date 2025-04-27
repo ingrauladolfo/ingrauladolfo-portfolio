@@ -29,9 +29,7 @@ export default function AppRoutes() {
       <Routes>
         <Route
           element={
-            <ProtectedRoutes>
               <MainLayout />
-            </ProtectedRoutes>
           }
         >
           <Route path="/" element={<Home />} />
@@ -40,8 +38,6 @@ export default function AppRoutes() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/stack" element={<Stack />} />
         </Route>
-
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
   );
