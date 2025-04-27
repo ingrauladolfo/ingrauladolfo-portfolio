@@ -1,4 +1,3 @@
-// Timeline.jsx
 import { FaMinus, FaPlus } from "react-icons/fa";
 import renderSection from "@/assets/functions/renderSection";
 import usePagination from "@/hooks/usePagination";
@@ -22,7 +21,6 @@ const Timeline = ({ data }) => {
             {[data.education, data.work].map(section => {
                 const isWorkSection = section === data.work;
                 
-                // Asignaciones condicionales
                 let items = eduItems;
                 let showButton = showEduButton;
                 let isExpanded = isEduExpanded;

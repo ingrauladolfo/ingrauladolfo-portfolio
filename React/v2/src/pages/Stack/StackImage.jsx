@@ -1,11 +1,13 @@
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 
 const StackImage = ({ skill }) => {
+  console.log('skill StackImage ', skill)
     const { isVisible, elementRef } = useIntersectionObserver()
   
     return (
       <div className="flex gap-4 h-fit transition-all" key={skill.name}>
         <span className="flex flex-col gap-2 items-center">
+          
           <img
             ref={elementRef}
             className={`hover:scale-95 hover:shadow-md rounded-3xl transition-all duration-700 transform ${
