@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-    X,
-} from 'lucide-react'; // Iconos importados
+import {    X,} from 'lucide-react'; 
 import linksDataSidebar from '@/assets/data/dataLinksSidebar';
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
