@@ -29,9 +29,7 @@ export default function AppRoutes() {
       <Routes>
         <Route
           element={
-            <ProtectedRoutes>
-              <MainLayout />
-            </ProtectedRoutes>
+            <MainLayout />
           }
         >
           <Route path="/" element={<Home />} />
