@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
+import { Routes, Route, HashRouter, useLocation } from 'react-router-dom';
 import { About, Experience, Home, Projects, Stack } from '@/pages';
 import MainLayout from '../MainLayout';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -24,12 +24,12 @@ const RouteTitleHandler = () => {
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <RouteTitleHandler /> {/* 👈 Aquí actualizamos el título */}
       <Routes>
         <Route
           element={
-            <MainLayout />
+              <MainLayout />
           }
         >
           <Route path="/" element={<Home />} />
@@ -38,9 +38,7 @@ export default function AppRoutes() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/stack" element={<Stack />} />
         </Route>
-
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
