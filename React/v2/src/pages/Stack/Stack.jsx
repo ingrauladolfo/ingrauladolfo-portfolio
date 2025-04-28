@@ -4,7 +4,7 @@ import StackImage from './StackImage'
 import { FaGear } from 'react-icons/fa6'
 const Stack = () => {
   return (
-    <section className='py-20 w-full mx-auto lg:w-[740px] pb-32'>
+    <section className='py-1 w-full mx-auto lg:w-[740px] pb-32'>
       <div className="h-full mt-2 max-w-7xl mx-auto px-4 py-8 text-white">
         <h2 className="flex items-center font-semibold gap-x-8 text-3xl mb-8 text-center">
           <FaGear className="mr-0" size={18} />
