@@ -68,7 +68,7 @@ const Timeline = ({ data }) => {
                         {showButton && (
                             <button
                                 onClick={handleClick}
-                                className="ml-12 py-3 px-4 flex items-center gap-3 text-purple-500 hover:text-purple-400 transition-colors rounded-lg"
+                                className="cursor-pointer ml-12 py-3 px-4 flex items-center gap-3 text-purple-500 hover:text-purple-400 transition-colors rounded-lg"
                             >
                                 <ButtonIcon className="text-lg" />
                                 <span className="text-sm font-medium">{buttonText}</span>

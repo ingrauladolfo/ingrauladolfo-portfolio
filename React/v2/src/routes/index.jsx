@@ -3,19 +3,13 @@ import { About, Experience, Home, Projects, Stack } from '@/pages';
 import MainLayout from '../MainLayout';
 import ProtectedRoutes from './ProtectedRoutes';
 import { useEffect } from 'react';
+import { pathToTitle } from '@/assets/data/routesPathToTile';
 
 const RouteTitleHandler = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const pathToTitle = {
-      '/': 'Inicio | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia',
-      '/about': 'Sobre mí | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia',
-      '/experience': 'Experiencia | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia',
-      '/projects': 'Proyectos | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia',
-      '/stack': 'Stack Tecnológico | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia',
-    };
-
+    pathToTitle,
     document.title = pathToTitle[location.pathname] || 'Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia';
   }, [location.pathname]);
 
@@ -27,11 +21,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <RouteTitleHandler /> {/* 👈 Aquí actualizamos el título */}
       <Routes>
-        <Route
-          element={
-              <MainLayout />
-          }
-        >
+        <Route element={<ProtectedRoutes><MainLayout /></ProtectedRoutes>}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />

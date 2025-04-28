@@ -5,7 +5,7 @@ const About = () => {
   const personalImageAlt = "I.S.C. Raúl Adolfo Torres Vargas";
 
   return (
-    <section className='py-20 w-full mx-auto lg:w-[740px] pb-32'>
+    <section className='py-1 w-full mx-auto lg:w-[740px] pb-32'>
       <h2
         class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
       >

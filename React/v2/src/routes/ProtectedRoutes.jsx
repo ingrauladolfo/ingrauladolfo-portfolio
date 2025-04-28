@@ -5,9 +5,7 @@ const ProtectedRoutes = ({ children }) => {
   const isAuthenticated = true; // Cambia esto según tu lógica de autenticación
   const location = useLocation();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/" state={{ from: location }} replace />;
-  }
+  if (!isAuthenticated) {    return <Navigate to="/" state={{ from: location }} replace />;  }
 
   return children;
 };

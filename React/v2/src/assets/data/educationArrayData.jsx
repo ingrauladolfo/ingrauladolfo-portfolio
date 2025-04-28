@@ -7,7 +7,7 @@ const educationArrayData = [
     bootcamp: false,
     type: "Universidad",
     name: "Universidad Vasco de Quiroga campus Santa María (Morelia)",
-    links: [{ id: '1', href: 'https://www.uvaq.edu.mx/ciencias-exactas-e-ingenierias/ing-en-sistemas-y-seguridad-informatica/', name: 'UVAQ' }],
+    links: [{ id: '1', href: 'https://www.uvaq.edu.mx/ing-en-sistemas/', name: 'UVAQ' }],
   },
   {
     startDate: "01/11/2021",
