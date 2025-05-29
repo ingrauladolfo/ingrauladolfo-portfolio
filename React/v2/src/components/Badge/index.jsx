@@ -1,15 +1,14 @@
-import React from 'react';
+import { ThemeContext } from '@/context/ThemeContext';
+import React, { useContext } from 'react'
 
-const Badge = ({ text, icon }) => {
+const Bage = ({ text, icon }) => {
+  const { theme } = useContext(ThemeContext);
+  const isDark = theme === 'dark';
   return (
     <div className="flex items-center">
       <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
-        <span
-          className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
-        ></span>
-        <div
-          className="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-white bg-blue-800 rounded-full cursor-pointer dark:bg-red-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
-        >
+        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"></span>
+        <div className={`inline-flex items-center justify-center w-full px-3 py-1 text-sm rounded-full cursor-pointer backdrop-blur-3xl whitespace-nowrap ${isDark ? 'bg-red-800 text-white/80' : 'bg-blue-800 text-white'}`}>
           {icon && <span className="mr-2">{icon}</span>} {text}
         </div>
       </span>
@@ -17,4 +16,4 @@ const Badge = ({ text, icon }) => {
   );
 };
 
-export default Badge;
+export default Bage
