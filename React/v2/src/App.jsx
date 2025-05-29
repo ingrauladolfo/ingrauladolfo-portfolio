@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AppRoutes from '@/routes';
-const App = () => {
+import { ThemeContext, ThemeProvider } from './context/ThemeContext';
+const AppContent = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className='bg-gray-950'>
+    <div className={theme === 'dark' ? 'bg-gray-950' : 'bg-gray-100'}>
       <AppRoutes />
     </div>
+  );
+};
+
+const App = () => {
+
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 
