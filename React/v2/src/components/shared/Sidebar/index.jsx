@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     const handleMenuMouseEnter = (item, level) => {
         if (activeMenu[level] !== item.title) { setActiveMenu([...activeMenu.slice(0, level), item.title]); }
     };
-    const handleMenuMouseLeave = (level) => { setActiveMenu(activeMenu.filter((_, idx) => idx < level)); };
+    const handleMenuMouseLeave = level => { setActiveMenu(activeMenu.filter((_, idx) => idx < level)); };
     const renderLinks = (links, level = 0) => (
         <ul className="space-y-4">
             {links.map((item, idx) => (
@@ -26,10 +26,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                         )}
                     </div>
                     {item.children && activeMenu[level] === item.title && (
-                        <div
-                            className={`absolute top-0 left-full w-64 p-4 space-y-4 shadow-lg ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'
-                                }`}
-                        >
+                        <div className={`absolute top-0 left-full w-64 p-4 space-y-4 shadow-lg ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'}`}>
                             {renderLinks(item.children, level + 1)}
                         </div>
                     )}
@@ -39,10 +36,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     );
 
     return (
-        <aside
-            className={`fixed top-0 left-0 w-64 h-screen p-4 z-50 shadow-lg flex flex-col transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                } ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'}`}
-        >
+        <aside className={`fixed top-0 left-0 w-64 h-screen p-4 z-50 shadow-lg flex flex-col transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'}`}>
             <div className="flex justify-between items-center mb-4">
                 <button onClick={closeSidebar} className={theme === 'dark' ? 'text-white' : 'text-gray-800'}>
                     <FaX />
