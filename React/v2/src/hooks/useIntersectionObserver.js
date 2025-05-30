@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-
 const useIntersectionObserver = (threshold = 0.2) => {
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef(null)
@@ -15,16 +14,8 @@ const useIntersectionObserver = (threshold = 0.2) => {
       },
       { threshold }
     )
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current)
-    }
-
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current)
-      }
-    }
+    if (elementRef.current) {      observer.observe(elementRef.current)    }
+    return () => {      if (elementRef.current) {        observer.unobserve(elementRef.current)      }}
   }, [threshold])
 
   return { isVisible, elementRef }

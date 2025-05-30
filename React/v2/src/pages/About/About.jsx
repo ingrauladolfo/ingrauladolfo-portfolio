@@ -15,7 +15,6 @@ const About = () => {
         <FaUserCheck className='size-7' />
         Sobre mí
       </h2>
-
       <article className={`max-w-svh overflow-hidden mx-auto flex flex-col items-center justify-center ${textColor} md:flex-row`}>
         <div className={`text-pretty order-2 md:order-1 [&>p]:mb-4 [&>p>strong]:${strongColor} [&>p>strong]:font-mono`}>
           <p>
@@ -24,12 +23,7 @@ const About = () => {
             la programación como a los 15 años por allá del 2009 con una desktop HP 🖥️
             y lo empecé por curiosidad. Actualmente estoy como <strong>
               fundador y director de Easy Software Design México, además de haber trabajado como
-              Desarrollador de Nuevas Tecnologías en <a
-                href="https://www.gruposalinas.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${linkColor} text-2xl font-[cursive]`}
-              >
+              Desarrollador de Nuevas Tecnologías en <a href="https://www.gruposalinas.com/" target="_blank" rel="noopener noreferrer" className={`${linkColor} text-2xl font-[cursive]`}              >
                 Grupo Salinas
               </a>  💻
             </strong>.
