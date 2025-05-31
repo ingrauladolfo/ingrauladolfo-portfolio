@@ -10,8 +10,7 @@ export default function Links() {
   const closePdf = () => setPdfUrl(null);
   return (
     <>
-      <nav className={`flex space-x-4 mr-4 text-sm ${isDark ? 'text-white' : 'text-gray-800'}`}>
-        {linksData.map((link, index) => {
+ <nav className={`flex space-x-2 flex-shrink-0 ${isDark ? 'text-white' : 'text-gray-800'} text-xs sm:text-sm`}>        {linksData.map((link, index) => {
           const isCV = link.title === 'CV';
           const hoverColor = isDark ? 'hover:text-amber-300' : 'hover:text-red-600';
           const classes = `flex items-center gap-1 ${hoverColor} transition`;
