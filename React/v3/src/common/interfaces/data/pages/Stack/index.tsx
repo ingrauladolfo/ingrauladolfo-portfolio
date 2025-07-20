@@ -7,6 +7,7 @@ type LocalizedString = {
 };
 
 type Image = {
+    id:number;
     src: string;
     alt: string;
     title: LocalizedString;
