@@ -1,0 +1,17 @@
+@import "@fontsource-variable/onest";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+}
+body {
+  color: rgba(17, 17, 17, 0.9);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+html {
+  font-family: "Onest Variable", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
