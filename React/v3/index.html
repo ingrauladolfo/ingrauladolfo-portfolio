@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Character encoding & compatibility -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- SEO: title, description, canonical -->
+  <title>Portfolio | Raúl Adolfo Torres Vargas</title>
+  <meta name="description"
+    content="Portfolio de I.S.C. Raúl Adolfo Torres Vargas – Desarrollador y Programador Web con +5 años de experiencia." />
+  <link rel="canonical" href="https://ingrauladolfo-portfolio.vercel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:url" content="https://ingrauladolfo-portfolio.vercel.app/" />
+  <meta property="og:title" content="Portfolio | Raúl Adolfo Torres Vargas" />
+  <meta property="og:description" content="Web developer & programmer con más de 5 años de experiencia." />
+  <meta property="og:image" content="https://ingrauladolfo-portfolio.vercel.app/favicon.svg" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portfolio | Raúl Adolfo Torres Vargas" />
+  <meta name="twitter:description" content="Web developer & programmer con más de 5 años de experiencia." />
+  <meta name="twitter:image" content="https://tu-dominio.com/og-image.png" />
+
+  <!-- Icons & manifest -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Performance: preconnect / preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/src/main.jsx" as="script" type="module" />
+
+  <!-- Best Practices: CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';        img-src 'self' data:;        font-src 'self' https://fonts.gstatic.com;        connect-src 'self';      " />
+
+  <!-- Accessibility hint: landmark roles -->
+  <!-- You can add a skip-link in your App component: 
+         <a href="#main-content" class="sr-only focus:not-sr-only">Saltar al contenido</a> -->
+</head>
+
+<body>
+  <!-- The React app should include a <main id="main-content" role="main"> wrapper -->
+  <div id="root"></div>
+
+  <!-- Load app -->
+  <script type="module" src="/src/main.jsx" defer></script>
+</body>
+
+</html>

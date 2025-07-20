@@ -23,12 +23,13 @@ export default function Navbar() {
         <button onClick={toggleSidebar} className={`focus:outline-none ${isDark ? 'text-white' : 'text-gray-950'}`}>
           {!sidebarOpen && <Menu size={24} />}
         </button>
-        <div className="flex items-center ml-auto gap-2 text-xs overflow-x-auto whitespace-nowrap sm:text-sm sm:overflow-x-visible">          <Links />
+        <div className="flex items-center ml-auto gap-2 text-xs overflow-x-auto whitespace-nowrap sm:text-sm sm:overflow-x-visible">
+          <Links />
           <button onClick={toggleTheme} className={isDark ? 'text-white' : 'text-gray-800'}>
             {theme === 'light' ? <FaSun size={20} /> : <FaMoon size={20} />}
           </button>
         </div>
-              <Sidebar closeSidebar={closeSidebar} sidebarOpen={sidebarOpen} />
+        <Sidebar closeSidebar={closeSidebar} sidebarOpen={sidebarOpen} />
 
       </div>
 

@@ -30,7 +30,7 @@ const renderSection = (sectionData, getWorkHere, getDateRange, getColor, getEduc
                         </p>
 
                         <div className="mt-2">
-                            {item.reasonLeaving &&                               getReasonLeaving(item.reasonLeaving, undefined, isDark)}
+                            {item.reasonLeaving && getReasonLeaving(item.reasonLeaving, undefined, isDark)}
                         </div>
 
                         {item.company && (
