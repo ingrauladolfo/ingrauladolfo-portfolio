@@ -1,33 +1,24 @@
-import { useState } from "react";
 import { educationExperienceData } from "../../assets/data/pages/Experience/educationExperienceData";
-import { useLanguage } from "../context";
 import { workExperienceData } from "../../assets/data/pages/Experience/workExperienceData";
+import { useLanguage } from "../context";
 
 const useExperienceData = () => {
-    const translateTitle={
-        education:{
-            es:'Educación',
-            en:'Education'
-        },
-        work:{
-            es:'Profesional',
-            en:'Professional'
-        }
-    }
-    const {lang} = useLanguage();
-  const [data] = useState({
+  const { lang } = useLanguage();
+
+  const data = {
     education: {
-      title: translateTitle.education[lang],
+      title: lang === 'es' ? 'Educación' : 'Education',
       items: educationExperienceData,
-      color: 'blue'
+      color: 'blue',
     },
     work: {
-      title: translateTitle.work[lang],
+      title: lang === 'es' ? 'Profesional' : 'Professional',
       items: workExperienceData,
-      color: 'green'
-    }
-  });
+      color: 'green',
+    },
+  };
+
   return { data };
 };
 
-export{ useExperienceData};
+export { useExperienceData };

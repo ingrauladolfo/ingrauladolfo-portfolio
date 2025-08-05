@@ -19,7 +19,7 @@ const Loading = () => {
     : lang === 'es' ? 'Inicio' : 'Home';
 
   return (
-    <div className="flex flex-col items-center justify-center py-16 gap-6 text-center">
+    <div className={`flex flex-col items-center justify-center py-16 gap-6 text-center ${theme==='dark'?'bg-gray-950':'bg-gray-100'}`}>
       <div className={`w-12 h-12 border-4 rounded-full animate-spin ${spinnerLoading}`} />
       <p className={`text-lg ${textLoading}`}>
         {lang === 'es' ? 'Cargando' : 'Loading'} {title}...
