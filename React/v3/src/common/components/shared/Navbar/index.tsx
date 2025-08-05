@@ -72,7 +72,7 @@ export default function Navbar() {
                                 </span>
                             </button>
                             {cvDropdown && (
-                                <div className={`absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
+                                <div className={`hidden md:absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
                                     <a
                                         href={href}
                                         download={getFileName(href)}
@@ -191,17 +191,7 @@ export default function Navbar() {
                                     </button>
                                     {mobileCvDropdown && (
                                         <div className={`absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
-                                            <a
-                                                href={href}
-                                                download={getFileName(href)}
-                                                type="application/pdf"
-                                                className={`block px-4 py-2 text-left w-full ${hoverBg}`}
-                                            >
-                                                <div className="flex items-center gap-2 justify-start">
-                                                    <FaDownload className="inline" />
-                                                    <span className="text-sm">{lang === 'es' ? 'Descargar' : 'Download'}</span>
-                                                </div>
-                                            </a>
+                                           
                                             <button
                                                 onClick={() => handleViewCV(href)}
                                                 className={`block px-4 py-2 text-left w-full ${hoverBg}`}
@@ -234,7 +224,7 @@ export default function Navbar() {
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
                     <div className="bg-white dark:bg-gray-900 p-4 rounded max-w-3xl max-h-[90vh] overflow-auto relative">
                         <button onClick={() => setPvOpen(false)} className="absolute top-2 right-2 text-lg font-bold">
-                            ✕
+                            <FaX />
                         </button>
                         <PDFViewer fileUrl={pdfUrl} />
                     </div>

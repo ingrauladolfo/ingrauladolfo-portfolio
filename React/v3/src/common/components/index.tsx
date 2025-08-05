@@ -4,4 +4,5 @@ import { PDFViewer } from "./shared/Pdf";
 import UnderConstruction from "./shared/UnderConstruction";
 import Badge from "./Badge";
 import Footer from "./shared/Footer";
-export {Navbar, PDFViewer,Loading, UnderConstruction,Badge, Footer}
+import NotFound from "./shared/NotFound";
+export {Navbar, PDFViewer,Loading, UnderConstruction,Badge, Footer, NotFound}

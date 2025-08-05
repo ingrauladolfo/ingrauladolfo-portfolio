@@ -1,95 +1,73 @@
-import {
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
-import {
-  lazy,
-  createElement,
-  useEffect,
-  useState,
-  type JSX,
-} from 'react';
-import { pathToTitle } from '../../../assets/data/routes/pathToTitle';
-import ProtectedRoute from '../ProtectedRoutes';
-import { useLanguage } from '../../context';
-import { Loading, UnderConstruction } from '../../components';
-import pagesMap from '../../../assets/data/routes/routeMap';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { lazy, Suspense, useEffect, useMemo } from 'react'
+import { pathToTitle } from '../../../assets/data/routes/pathToTitle'
+import ProtectedRoute from '../ProtectedRoutes'
+import { useLanguage } from '../../context'
+import { Loading, NotFound, UnderConstruction } from '../../components'
+import pagesMap from '../../../assets/data/routes/routeMap'
+import MainLayout from '../../../pages/MainLayout'
+import type { ComponentType, LazyExoticComponent } from 'react'
 
 const AppRouter = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { lang } = useLanguage();
-  const currentPath = location.pathname;
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { lang } = useLanguage()
+  const currentPath = location.pathname
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [RouteContent, setRouteContent] = useState<JSX.Element | null>(null);
-  // 🔁 Busca el match de la ruta actual
-  const getMatchedRoute = (path: string) => pathToTitle.find(entry => Object.values(entry.path).includes(path));
-  // ✅ Cambiar título del documento al cambiar ruta o idioma
-  useEffect(() => {
-    const match = getMatchedRoute(currentPath);
-    document.title = match ? match.title[lang] : lang === 'en' ? 'Error | Page not found' : 'Error | Página no encontrada';
-  }, [currentPath, lang]);
+  const getMatchedRoute = (path: string) =>
+    pathToTitle.find(entry => Object.values(entry.path).includes(path))
 
-  // ✅ Redirige a la ruta correspondiente si cambia el idioma
+  // update document.title
   useEffect(() => {
-    const match = getMatchedRoute(currentPath);
-    if (!match) { return; }
-    const newPath = match.path[lang];
-    if (newPath && currentPath !== newPath) { navigate(newPath, { replace: true }); }
-  }, [lang, currentPath, navigate]);
+    const match = getMatchedRoute(currentPath)
+    document.title = match
+      ? match.title[lang]
+      : lang === 'en'
+      ? 'Error | Page not found'
+      : 'Error | Página no encontrada'
+  }, [currentPath, lang])
 
-  // ✅ Cargar contenido dinámicamente o mostrar 404 / en construcción
+  // sync URL with lang-specific path
   useEffect(() => {
-    setIsLoading(true);
-    const match = getMatchedRoute(currentPath);
-    if (!match) {
-      // Ruta no válida → 404
-      setTimeout(() => {
-        setRouteContent(
-          <h1>
-            Error 404: {lang === 'en' ? 'Page not found' : 'Página no encontrada'} 🚫
-          </h1>
-        );
-        setIsLoading(false);
-      }, 300);
-      return;
+    const match = getMatchedRoute(currentPath)
+    if (!match) return
+    const newPath = match.path[lang]
+    if (newPath && currentPath !== newPath) {
+      navigate(newPath, { replace: true })
     }
+  }, [lang, currentPath, navigate])
 
-    const en = match.path.en;
-    const es = match.path.es;
-    const loader = pagesMap[en] || pagesMap[es];
+  // decide which component to render
+  const RouteComp: LazyExoticComponent<ComponentType> | ComponentType = useMemo(() => {
+    const match = getMatchedRoute(currentPath)
+    if (!match) return NotFound
 
-    if (!loader) {
-      // Ruta válida pero sin loader → página en construcción
-      setTimeout(() => {
-        setRouteContent(<UnderConstruction />);
-        setIsLoading(false);
-      }, 300);
-      return;
-    }
+    const loader = pagesMap[match.path.en] || pagesMap[match.path.es]
+    if (!loader) return UnderConstruction
 
-    // Ruta válida con componente lazy
-    const Component = lazy(loader);
-    setTimeout(() => {
-      setRouteContent(
-        <ProtectedRoute>
-          {createElement(Component)}
-        </ProtectedRoute>
-      );
-      setIsLoading(false);
-    }, 300);
-  }, [currentPath, lang]);
-
-  if (isLoading || RouteContent === null) { return <Loading />; }
+    return lazy(loader)
+  }, [currentPath, lang])
 
   return (
     <Routes>
-      <Route key={currentPath} path={currentPath} element={RouteContent} />
+      <Route
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Loading />}>
+              <RouteComp />
+            </Suspense>
+          }
+        />
+      </Route>
     </Routes>
-  );
-};
+  )
+}
 
-export { AppRouter };
+export { AppRouter }

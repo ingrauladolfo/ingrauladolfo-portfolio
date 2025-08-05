@@ -8,5 +8,5 @@ export{
     About,
     Experience,
     Projects,
-    Stack
+    Stack,
 }
