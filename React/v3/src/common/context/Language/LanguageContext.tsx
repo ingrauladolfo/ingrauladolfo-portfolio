@@ -3,9 +3,9 @@ import i18n from '../../../i18n';
 import type { LanguageContextValue } from '../../interfaces/context/Language';
 
 const LanguageContext = createContext<LanguageContextValue>({} as any);
-export const useLanguage = () => useContext(LanguageContext);
+ const useLanguage = () => useContext(LanguageContext);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+ function LanguageProvider({ children }: { children: ReactNode }) {
   // Recupera idioma guardado o usa i18n.language
   const savedLang = localStorage.getItem('lang') as 'en' | 'es' | null;
   const [lang, setLang] = useState<'en' | 'es'>(savedLang || (i18n.language as 'en' | 'es'));
@@ -29,3 +29,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     </LanguageContext.Provider>
   );
 }
+
+
+export { useLanguage, LanguageProvider }

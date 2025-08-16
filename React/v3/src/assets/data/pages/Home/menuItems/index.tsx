@@ -1,15 +1,7 @@
 // src/data/menuItems.ts
-import type { JSX } from "react";
 import { pathToTitle } from "../../../routes/pathToTitle";
 import type { PathToTitle } from "../../../../../common/interfaces/routes";
-type Lang = 'en' | 'es';
-
-export interface MenuItem {
-  src: string;
-  alt: Record<Lang, string>;
-  content: Record<Lang, JSX.Element>;
-  path: Record<Lang, string>;
-}
+import type { MenuItem } from "../../../../../common/interfaces/data/pages/Home";
 
 const routes = pathToTitle as PathToTitle[];
 

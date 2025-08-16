@@ -1,72 +1,78 @@
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
-import { lazy, Suspense, useEffect, useMemo } from 'react'
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  type ComponentType,
+  type LazyExoticComponent,
+  type FC,
+} from 'react'
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom'
+
 import { pathToTitle } from '../../../assets/data/routes/pathToTitle'
-import ProtectedRoute from '../ProtectedRoutes'
+import pagesMap from '../../../assets/data/routes/routeMap'
 import { useLanguage } from '../../context'
 import { Loading, NotFound, UnderConstruction } from '../../components'
-import pagesMap from '../../../assets/data/routes/routeMap'
+import ProtectedRoute from '../ProtectedRoutes'
 import MainLayout from '../../../pages/MainLayout'
-import type { ComponentType, LazyExoticComponent } from 'react'
 
-const AppRouter = () => {
+const AppRouter: FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { lang } = useLanguage()
+
   const currentPath = location.pathname
 
-  const getMatchedRoute = (path: string) =>
-    pathToTitle.find(entry => Object.values(entry.path).includes(path))
+  const matchedRoute = useMemo(
+    () => pathToTitle.find(entry =>
+      Object.values(entry.path).includes(currentPath)
+    ),
+    [currentPath]
+  )
 
-  // update document.title
   useEffect(() => {
-    const match = getMatchedRoute(currentPath)
-    document.title = match
-      ? match.title[lang]
-      : lang === 'en'
-      ? 'Error | Page not found'
-      : 'Error | Página no encontrada'
-  }, [currentPath, lang])
+    document.title = matchedRoute ? matchedRoute.title[lang] : (lang === 'en' ? 'Error | Page not found' : 'Error | Página no encontrada')
+  }, [matchedRoute, lang])
 
-  // sync URL with lang-specific path
-  useEffect(() => {
-    const match = getMatchedRoute(currentPath)
-    if (!match) return
-    const newPath = match.path[lang]
-    if (newPath && currentPath !== newPath) {
-      navigate(newPath, { replace: true })
-    }
-  }, [lang, currentPath, navigate])
+  // <-- REDIRECT EFFECT REMOVED ON PURPOSE
 
-  // decide which component to render
-  const RouteComp: LazyExoticComponent<ComponentType> | ComponentType = useMemo(() => {
-    const match = getMatchedRoute(currentPath)
-    if (!match) return NotFound
+  const LoaderComponent: LazyExoticComponent<ComponentType<any>> = useMemo(() => {
+    if (!matchedRoute) return lazy(() => Promise.resolve({ default: NotFound }))
 
-    const loader = pagesMap[match.path.en] || pagesMap[match.path.es]
-    if (!loader) return UnderConstruction
+    const loader =
+      pagesMap[matchedRoute.path.en] || pagesMap[matchedRoute.path.es]
+
+    if (!loader) return lazy(() => Promise.resolve({ default: UnderConstruction }))
 
     return lazy(loader)
-  }, [currentPath, lang])
+  }, [matchedRoute, lang])
+
+  const LoadingFallback = useMemo(() => <Loading />, []) // mismo fallback para evitar remounts
 
   return (
-    <Routes>
-      <Route
-        element={
-          <ProtectedRoute>
-            <MainLayout />
-          </ProtectedRoute>
-        }
-      >
+    <Suspense fallback={LoadingFallback}>
+      <Routes>
         <Route
-          path="*"
           element={
-            <Suspense fallback={<Loading />}>
-              <RouteComp />
-            </Suspense>
+            <ProtectedRoute>
+              <MainLayout />
+            </ProtectedRoute>
           }
-        />
-      </Route>
-    </Routes>
+        >
+          <Route
+            path="*"
+            element={
+              <LoaderComponent />
+            }
+          />
+        </Route>
+      </Routes>
+    </Suspense>
   )
 }
 

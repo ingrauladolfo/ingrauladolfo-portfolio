@@ -6,20 +6,20 @@ type Project = {
     year: { es: string, en: string };
     image: {
         cover: {
-            href: string;
-            alt: string;
+            coverHref: string;
+            coverAlt: string;
         };
         images: {
-            id: number;
-            href: string;
-            alt: string;
+            imagesId: number;
+            imagesHref: string;
+            imagesAlt: string;
         }[];
     };
     tags: string[];
     links: {
-        id: number;
-        github?: string;
-        website?: string;
+        linksId: number;
+        linksGithub?: string;
+        linksWebsite?: string;
     }[];
 };
 

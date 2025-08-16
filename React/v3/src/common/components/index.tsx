@@ -5,4 +5,5 @@ import UnderConstruction from "./shared/UnderConstruction";
 import Badge from "./Badge";
 import Footer from "./shared/Footer";
 import NotFound from "./shared/NotFound";
-export {Navbar, PDFViewer,Loading, UnderConstruction,Badge, Footer, NotFound}
+import { SlickSlider } from "./SlickSlider";
+export {Navbar, PDFViewer,Loading, UnderConstruction,Badge, Footer, NotFound,SlickSlider}

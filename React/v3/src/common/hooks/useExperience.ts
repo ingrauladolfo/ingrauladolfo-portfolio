@@ -4,20 +4,7 @@ import { useLanguage } from "../context";
 
 const useExperienceData = () => {
   const { lang } = useLanguage();
-
-  const data = {
-    education: {
-      title: lang === 'es' ? 'Educación' : 'Education',
-      items: educationExperienceData,
-      color: 'blue',
-    },
-    work: {
-      title: lang === 'es' ? 'Profesional' : 'Professional',
-      items: workExperienceData,
-      color: 'green',
-    },
-  };
-
+  const data = { education: { title: lang === 'es' ? 'Educación' : 'Education', items: educationExperienceData, color: 'blue' }, work: { title: lang === 'es' ? 'Profesional' : 'Professional', items: workExperienceData, color: 'green' }, };
   return { data };
 };
 
