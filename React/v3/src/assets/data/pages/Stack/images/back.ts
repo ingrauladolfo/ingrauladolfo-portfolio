@@ -1,4 +1,4 @@
-import type { Image } from "../../../../../common/interfaces/data/pages/Stack";
+import type { Image } from "../../../../../common/interfaces/data/pages/Stack"
 
 const back:Image[]=[
     {

@@ -4,4 +4,4 @@ interface LanguageContextValue {
   setLang: (lang: 'en' | 'es') => void;
 }
 
-export type {LanguageContextValue}
+export type { LanguageContextValue }

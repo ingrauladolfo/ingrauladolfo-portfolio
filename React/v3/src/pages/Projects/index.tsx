@@ -11,14 +11,13 @@ import usePaginationResponsive from '../../common/hooks/usePaginationResponsive'
 import { textProjects } from '../../assets/data/pages/Projects/textProjects';
 import { tagColorMap, tagIcons } from '../../assets/data/pages/Projects/tagIcons';
 import { getFormatLongDate } from '../../common/hooks/useGetFormatLongDate';
+import { getBgClass, getButtonWebsiteLinksClass } from '../../assets/styles/pages/Projects';
 
 const Projects: FC = () => {
     const { theme } = useTheme();
     const { lang } = useLanguage();
     const t = textProjects[lang] || textProjects.en;
     const [flippedId, setFlippedId] = useState<number | null>(null);
-    // Tabs fixed: All, Freelancer, Empresa
-    // Translate tab labels
     const tabLabels = { all: lang === 'es' ? 'Todos' : 'All', Freelancer: lang === 'es' ? 'Freelancer' : 'Freelancer', Empresa: lang === 'es' ? 'Empresa' : 'Company', };
     const tabs = ['all', 'Freelancer', 'Empresa'];
     const [selectedTab, setSelectedTab] = useState<string>('all');
@@ -33,9 +32,7 @@ const Projects: FC = () => {
 
     // Pagination applied on filtered projects
     const { visibleItems, loadMore, showLess, showButton, isExpanded, isMobile } = usePaginationResponsive(filtered, 1, 3);
-    const frontBg = theme === 'dark' ? 'bg-gray-950 text-gray-100 border-2 border-red-600' : 'bg-gray-100 text-gray-950 border-2 border-amber-300';
-    const backBg = frontBg;
-    const buttonWebsiteLinks = `relative overflow-hidden border z-10 transition-colors duration-300  before:absolute before:top-0 before:left-0 before:h-full before:w-0 before:z-[-1]  before:transition-all before:duration-700 before:ease-in-out  hover:before:w-full  ${theme === 'dark' ? 'bg-gray-950 border-red-600 text-gray-100 hover:text-gray-950 hover:border-amber-600 before:bg-amber-300' : 'bg-gray-100 border-amber-300 text-gray-950 hover:text-gray-100 hover:border-red-300 before:bg-red-600'}`;
+    
     const handleMouseEnter = (id: number) => { if (!isMobile) { setFlippedId(id) }; };
     const handleMouseLeave = () => { if (!isMobile) setFlippedId(null); };
 
@@ -57,84 +54,78 @@ const Projects: FC = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-                    {visibleItems.map(project => {
-                        const isFlipped = flippedId === project.id;
+                    {visibleItems.map(({ id, title, typeProject, image: { cover: { coverHref, coverAlt }, images = [] }, description, year, tags, links = [] }) => {
+                        const isFlipped = flippedId === id;
+
                         return (
-                            <div key={project.id} className="transition-all duration-500" style={{ height: isFlipped ? '40rem' : '16rem' }} onMouseEnter={() => handleMouseEnter(project.id)} onMouseLeave={handleMouseLeave}>
-                                <div onClick={() => isMobile && setFlippedId(isFlipped ? null : project.id)} className={`relative h-full w-full rounded-xl shadow-xl transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} cursor-pointer`}>
+                            <div key={id} className="transition-all duration-500" style={{ height: isFlipped ? '40rem' : '16rem' }} onMouseEnter={() => handleMouseEnter(id)} onMouseLeave={handleMouseLeave}>
+                                <div onClick={() => isMobile && setFlippedId(isFlipped ? null : id)} className={`relative h-full w-full rounded-xl shadow-xl transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} cursor-pointer`}>
                                     {/* Front */}
-                                    <div className={`${frontBg} absolute inset-0 h-full overflow-hidden rounded-xl flex flex-col [backface-visibility:hidden]`}>
-                                        <img src={project.image.cover.href} alt={project.image.cover.alt} className="h-48 w-full object-cover rounded-t-xl" />
+                                    <div className={`${getBgClass(theme)} absolute inset-0 h-full overflow-hidden rounded-xl flex flex-col [backface-visibility:hidden]`}>
+                                        <img src={coverHref} alt={coverAlt} className="h-48 w-full object-cover rounded-t-xl" />
                                         <p className="mt-2 px-4 text-lg font-semibold">
-                                            {project.title[lang]} ({project.typeProject})
+                                            {title[lang]} ({typeProject})
                                         </p>
                                     </div>
 
                                     {/* Back */}
-                                    <div className={`${backBg} absolute inset-0 h-full flex flex-col justify-between rounded-xl p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]`}>
-                                        <Swiper modules={[Autoplay, Pagination]} autoplay={{ delay: 3000, disableOnInteraction: false }} pagination={{ clickable: false }} loop className="w-full h-[18rem] md:h-[20rem] lg:h-[22rem] xl:h-[24rem] rounded-lg shadow-lg">
-                                            {project.image.images.map(img => (
-                                                <SwiperSlide key={img.id}>
-                                                    <img src={img.href} alt={img.alt} className="w-full h-full object-cover rounded-lg" />
+                                    <div className={`${getBgClass(theme)} absolute inset-0 h-full flex flex-col justify-between rounded-xl p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]`}>
+                                        <Swiper
+                                            modules={[Autoplay, Pagination]}
+                                            autoplay={{ delay: 3000, disableOnInteraction: false }}
+                                            pagination={{ clickable: false }}
+                                            loop
+                                            className="w-full h-[18rem] md:h-[20rem] lg:h-[22rem] xl:h-[24rem] rounded-lg shadow-lg"
+                                        >
+                                            {images.map(({ imagesId, imagesHref, imagesAlt }) => (
+                                                <SwiperSlide key={imagesId}>
+                                                    <img src={imagesHref} alt={imagesAlt} className="w-full h-full object-cover rounded-lg" />
                                                 </SwiperSlide>
                                             ))}
                                         </Swiper>
 
                                         <div className="mt-3 flex flex-col items-center space-y-2">
                                             <h3 className={`block text-xl text-center font-semibold py-1 px-2 rounded-full mb-2 ${theme === 'dark' ? 'bg-red-600 text-gray-100' : 'bg-amber-300 text-gray-950'}`}>
-                                                {project.title[lang]} ({project.typeProject})
+                                                {title[lang]} ({typeProject})
                                             </h3>
-                                            <p className="text-sm">{project.description[lang]}</p>
+                                            <p className="text-sm">{description[lang]}</p>
                                             <p className={`flex items-center gap-2 text-lg mt-2 ${theme === 'dark' ? 'text-gray-100' : 'text-gray-950'}`}>
                                                 <FaCalendar />
-                                                {lang === 'es' ? 'Se desarrolló el' : 'Developed on'} {getFormatLongDate(project.year, lang)}
+                                                {lang === 'es' ? 'Se desarrolló el' : 'Developed on'} {getFormatLongDate(year, lang)}
                                             </p>
 
                                             <div className="flex flex-wrap justify-center gap-2">
-                                                {project.tags?.map((tag, i) => {
+                                                {tags?.map((tag, i) => {
                                                     const key = tag.toLowerCase();
                                                     const Icon = tagIcons[key];
                                                     const iconColor = tagColorMap[key] || '#ffffff';
+
                                                     return (
-                                                        <span key={i} className={`flex items-center gap-1 rounded-full px-2 py-1 text-sm  border-3 ${theme === 'dark' ? 'bg-gray-950 border-red-600 text-gray-100' : 'bg-gray-100 border-amber-300 text-gray-950'}`}>
+                                                        <span key={i} className={`flex items-center gap-1 rounded-full px-2 py-1 text-sm border-3 ${theme === 'dark' ? 'bg-gray-950 border-red-600 text-gray-100' : 'bg-gray-100 border-amber-300 text-gray-950'}`}>
                                                             {Icon && cloneElement(Icon, { style: { color: iconColor } })}
                                                             <span>{tag}</span>
                                                         </span>
                                                     );
                                                 })}
-
                                             </div>
                                         </div>
 
-                                        <div className={`mt-4 flex flex-wrap justify-center gap-3  `}>
-                                            {project.links?.flatMap(linkObj => {
+                                        <div className="mt-4 flex flex-wrap justify-center gap-3">
+                                            {links?.flatMap(({ linksId, linksGithub, linksWebsite }) => {
                                                 const items = [];
-                                                // GitHub button
-                                                if (linkObj.github) {
+
+                                                if (linksGithub) {
                                                     items.push(
-                                                        <a key={`${linkObj.id}-github`} href={linkObj.github} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 px-4 py-2 text-sm rounded-full font-semibold transition border-3  ${buttonWebsiteLinks}`}>
+                                                        <a key={`${linksId}-github`} href={linksGithub} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 px-4 py-2 text-sm rounded-full font-semibold transition border-3 ${getButtonWebsiteLinksClass}`}>
                                                             <FaGithub />
                                                             {t.github}
                                                         </a>
                                                     );
                                                 }
-
-                                                // Website button
-                                                if (linkObj.website) {
-                                                    const label =
-                                                        linkObj.id === 1
-                                                            ? (lang === 'es' ? 'Sitio web oficial' : 'Official Website')
-                                                            : (lang === 'es'
-                                                                ? `Sitio web de respaldo ${linkObj.id}`
-                                                                : `Backup Website ${linkObj.id}`);
-
+                                                if (linksWebsite) {
+                                                    const label = linksId === 1 ? (lang === 'es' ? 'Sitio web oficial' : 'Official Website') : (lang === 'es' ? `Sitio web de respaldo ${linksId}` : `Backup Website ${linksId}`);
                                                     items.push(
-                                                        <a
-                                                            key={`${linkObj.id}-website`}
-                                                            href={linkObj.website}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className={`inline-flex items-center gap-1 px-4 py-2 text-sm rounded-full font-semibold transition border-3 ${buttonWebsiteLinks}`} >
+                                                        <a key={`${linksId}-website`} href={linksWebsite} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 px-4 py-2 text-sm rounded-full font-semibold transition border-3 ${getButtonWebsiteLinksClass}`}>
                                                             <FaLink />
                                                             {label}
                                                         </a>
@@ -143,7 +134,6 @@ const Projects: FC = () => {
 
                                                 return items;
                                             })}
-
                                         </div>
                                     </div>
                                 </div>
@@ -151,6 +141,7 @@ const Projects: FC = () => {
                         );
                     })}
                 </div>
+
 
                 {showButton && (
                     <div className="mt-12 flex justify-center gap-4 flex-wrap">
