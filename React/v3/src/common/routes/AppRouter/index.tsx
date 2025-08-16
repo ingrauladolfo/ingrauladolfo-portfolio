@@ -1,18 +1,5 @@
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useMemo,
-  type ComponentType,
-  type LazyExoticComponent,
-  type FC,
-} from 'react'
-import {
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom'
+import {  lazy,  Suspense,  useEffect,  useMemo,  type ComponentType,  type LazyExoticComponent,  type FC,} from 'react'
+import {  Routes,  Route,  useLocation,} from 'react-router-dom'
 
 import { pathToTitle } from '../../../assets/data/routes/pathToTitle'
 import pagesMap from '../../../assets/data/routes/routeMap'
