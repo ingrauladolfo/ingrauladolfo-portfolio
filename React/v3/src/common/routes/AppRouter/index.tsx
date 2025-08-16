@@ -23,7 +23,6 @@ import MainLayout from '../../../pages/MainLayout'
 
 const AppRouter: FC = () => {
   const location = useLocation()
-  const navigate = useNavigate()
   const { lang } = useLanguage()
 
   const currentPath = location.pathname
