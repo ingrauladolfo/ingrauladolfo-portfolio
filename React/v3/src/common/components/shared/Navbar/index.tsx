@@ -72,7 +72,7 @@ export default function Navbar() {
                                 </span>
                             </button>
                             {cvDropdown && (
-                                <div className={`hidden md:absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
+                                <div className={`absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
                                     <a
                                         href={href}
                                         download={getFileName(href)}
@@ -224,7 +224,7 @@ export default function Navbar() {
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
                     <div className="bg-white dark:bg-gray-900 p-4 rounded max-w-3xl max-h-[90vh] overflow-auto relative">
                         <button onClick={() => setPvOpen(false)} className="absolute top-2 right-2 text-lg font-bold">
-                            <FaX />
+                            ✕
                         </button>
                         <PDFViewer fileUrl={pdfUrl} />
                     </div>
