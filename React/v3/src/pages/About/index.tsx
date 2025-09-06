@@ -2,7 +2,7 @@ import { FaUser } from 'react-icons/fa6';
 import { useLanguage, useTheme } from '../../common/context';
 import { aboutPageTitle } from '../../assets/data/pages/About/aboutTextTitle';
 import { aboutSectionData } from '../../assets/data/pages/About/aboutSectionData';
-import { getLinkColor, getStrongColor, getTextColor } from '../../assets/styles/pages/About';
+import { getLinkColor, getTextColor } from '../../assets/styles/pages/About';
 
 const About = () => {
   const { theme } = useTheme();
