@@ -6,7 +6,7 @@ import useTypeWriting from '../../common/hooks/useTypeWriting';
 import { handleClick } from '../../common/functions/handleClick';
 import { FaArrowRight } from 'react-icons/fa6';
 import { getBaseButton, getButtonWebsiteLinks } from '../../assets/styles/pages/Home';
-import { Badge, ParticleCanvas } from '../../common/components';
+import { Badge } from '../../common/components';
 
 const Home = () => {
   const personalImageAlt = "I.S.C. Raúl Adolfo Torres Vargas";
