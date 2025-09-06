@@ -33,7 +33,7 @@ const AppRouter: FC = () => {
     const loader =
       pagesMap[matchedRoute.path.en] || pagesMap[matchedRoute.path.es]
 
-    if (!loader) return lazy(() => Promise.resolve({ default: UnderConstruction }))
+    if (!loader) {return lazy(() => Promise.resolve({ default: UnderConstruction }))}
 
     return lazy(loader)
   }, [matchedRoute, lang])
@@ -46,7 +46,7 @@ const AppRouter: FC = () => {
         <Route
           element={
             <ProtectedRoute>
-              <MainLayout />
+                            <MainLayout />
             </ProtectedRoute>
           }
         >

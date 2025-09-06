@@ -17,7 +17,6 @@ const Experience = () => {
           <FaMedal size={20} className={theme=='dark' ? 'text-white' : 'text-gray-900'} />
           {experienceMainTitle.title[lang]}
         </h2>
-
         <ExperienceDetail data={data} lang={lang} theme={theme} />
       </div>
     </section>
