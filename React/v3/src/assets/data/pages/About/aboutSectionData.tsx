@@ -205,7 +205,7 @@ const aboutSectionData = (linkColor: string): AboutSection[] => {
     {
       id: 4,
       title: { es: "Motivación", en: "Motivation" },
-      image: { href: '/img/about/motivations.webp', alt: { es: 'Imagen sobre motivación', en: 'Image about motivation' } },
+      image: { href: '/img/about/motivations.webp', alt: { es: 'Imagen acerca motivación', en: 'Image about motivation' } },
       content: {
         es: (
           <div className="space-y-6">
