@@ -1,11 +1,12 @@
-import { Badge } from "../../common/components";
-import { useTheme, useLanguage } from "../../common/context";
-import useTypeWriting from "../../common/hooks/useTypeWriting";
-import { useState } from "react";
-import { FaHandPointUp } from "react-icons/fa6";
-import { dataTypeWriting, menuItems } from "../../assets/data/pages";
-import { homeContent } from "../../assets/data/pages/Home/HomeContent";
-import { handleClick } from "../../common/functions/handleClick";
+import { useState } from 'react'
+import { useLanguage, useTheme } from '../../common/context';
+import { homeContent } from '../../assets/data/pages/Home/HomeContent';
+import { dataTypeWriting, menuItems } from '../../assets/data/pages';
+import useTypeWriting from '../../common/hooks/useTypeWriting';
+import { handleClick } from '../../common/functions/handleClick';
+import { FaArrowRight } from 'react-icons/fa6';
+import { getBaseButton, getButtonWebsiteLinks } from '../../assets/styles/pages/Home';
+import { Badge, ParticleCanvas } from '../../common/components';
 
 const Home = () => {
   const personalImageAlt = "I.S.C. Raúl Adolfo Torres Vargas";
@@ -13,63 +14,90 @@ const Home = () => {
   const { lang } = useLanguage();
   const [selected, setSelected] = useState<number>(0);
   const { badgeText, subtitle, paragraph } = homeContent;
-  const localizedData = dataTypeWriting.map(({ title, speed, delay }) => ({ title: title[lang], speed: speed, delay: delay, }));
+
+  const localizedData = dataTypeWriting.map(({ title, speed, delay }) => ({
+    title: title[lang],
+    speed,
+    delay,
+  }));
   const { output, showTitle } = useTypeWriting(localizedData);
 
   return (
-    <>
-      <section className="pt-8 pb-32 w-full mx-auto lg:w-[740px]">
-        <div className="max-w-svh">
-          <div className="flex gap-4 mb-4">
-            <img src="/img/home/home.webp" alt={personalImageAlt} className="rounded-full shadow-lg size-16" />
-            <button onClick={() => handleClick('https://www.linkedin.com/in/ingrauladolfotorresvargas/')} className="flex justify-center items-center transition md:hover:scale-105">
-              <Badge text={badgeText[lang]} />
-            </button>
+    <header
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden text-center"
+      aria-label={lang === 'es' ? 'Sección principal' : 'Main hero'}
+    >
+        {/* Contenido principal */}
+      <div className="relative z-30 container mx-auto px-6 flex flex-col items-center justify-center gap-10 min-h-screen">
+        <div className="flex flex-col items-center justify-center text-center w-full gap-6">
+
+          {/* Imagen y Badge */}
+          <div className="flex flex-row items-center justify-center gap-4">
+            <div className="mt-10 md:mt-auto rounded-full shadow-lg size-28 sm:size-36 object-cover border-4 border-gray-300 dark:border-gray-700">
+              <img
+                src="/img/home/home.webp"
+                alt={personalImageAlt}
+                className="rounded-full shadow-lg size-28 sm:size-36 object-cover border-4"
+              />
+            </div>
+            <Badge text={badgeText[lang]} icon={<FaArrowRight />} />
           </div>
 
-          <div className="h-[70px] sm:h-[90px] relative">
-            <h1 className={`text-2xl mb-1 font-bold tracking-tight sm:text-5xl transition-opacity duration-300 ${showTitle ? "opacity-100" : "opacity-0"} ${theme === "dark" ? "text-gray-100" : "text-gray-950"}`}>
-              {output}
-            </h1>
 
-            <span className={`text-xl text-semibold w-full text-start ${theme === "dark" ? "text-amber-300" : "text-red-600"}`}>
-              {subtitle[lang]}
+          {/* Texto principal */}
+          <h1
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-950 dark:text-white"
+            style={{
+              textShadow:
+                theme === 'dark'
+                  ? '0 6px 20px rgba(0,0,0,0.6), 0 0 22px rgba(255,215,0,0.6)'
+                  : 'none',
+            }}
+          >
+            <span className={`block ${showTitle ? "opacity-100" : "opacity-0"} ${theme === "dark" ? "text-gray-100" : "text-gray-950"}`}>
+              Raúl Adolfo
             </span>
+            <span className={`${theme === "dark" ? "text-amber-300" : "text-red-600"}`}>
+              Torres Vargas
+            </span>
+          </h1>
 
-            <p className={`mt-4 text-xl ${theme === "dark" ? "text-gray-100" : "text-gray-950"}`}>
-              {paragraph[lang]}
-            </p>
+          <span className={`text-3xl font-medium ${theme === "dark" ? "text-amber-300" : "text-red-600"
+            }`}>
+            {subtitle[lang]}
+          </span>
+          <p className={`text-xl sm:text-5xl font-bold tracking-tight transition-opacity duration-500 ${showTitle ? "opacity-100" : "opacity-0"} ${theme === "dark" ? "text-gray-100" : "text-gray-950"}`}>
+            {output}
+          </p>
+          <p className={`mt-4 max-w-prose text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-800"
+            }`}>
+            {paragraph[lang]}
+          </p>
+
+
+
+          {/* Botones + menú */}
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
+            {menuItems.slice(0, menuItems.length).map((m, i) => { // Usando menuItems.length
+              const label = m.alt?.[lang] || `item-${i}`;
+              const isActive = selected === i;
+              return (
+                <button key={i} onClick={() => { setSelected(i); const t = String(m.path?.[lang] || '').trim(); if (!t) { return; } if (/^https?:\/\//i.test(t)) { handleClick(t); } else { window.location.assign(t); } }} aria-current={isActive ? 'page' : undefined} className={`${getBaseButton()} ${getButtonWebsiteLinks(theme)} w-48 text-center text-xl px-6 py-3`}>
+                  {/* Ícono y texto */}
+                  <span className="flex items-center justify-center">
+                    {m.icon} {/* Muestra el ícono */}
+                    <span className="text-xs">{label}</span> {/* Muestra el texto */}
+                  </span>
+                </button>
+              );
+            })}
+
           </div>
         </div>
-      </section>
-      <section className="relative z-10 pt-40 md:pt-20 pb-32 md:pb-0 w-full mx-auto lg:w-[740px]">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {menuItems.map(({ src, alt, path }, i) => {
-            const isBig = i === 0;
-            const isSelected = selected === i;
-            const ringClass = isSelected ? `ring-2 ${theme === "dark" ? "ring-yellow-300" : "ring-red-700"} scale-[1.02]` : "";
-            const target = String(path[lang] || "").trim();
-
-            return (
-              <a key={i} href={target} onClick={() => setSelected(i)} className={`relative group overflow-hidden rounded-lg shadow-md transition-transform duration-300 ${isBig ? "row-span-2 h-80" : "h-36"} ${ringClass}`} aria-current={isSelected ? "page" : undefined}>
-                <div className="relative w-full h-full overflow-hidden">
-                  <img src={src} alt={alt[lang]} className="w-full h-full object-cover transition-transform duration-500 md:group-hover:-translate-y-6 pointer-events-none" />
-                  <div className={`hidden md:flex absolute inset-0 flex-col items-center justify-center transition-transform duration-500 translate-y-full group-hover:translate-y-0 ${theme === "dark" ? "bg-gray-950" : "bg-gray-100"}`}>
-                    <span className={`text-lg font-semibold text-center mb-2 ${theme === "light" ? "text-gray-950" : "text-gray-100"}`}>
-                      {alt[lang]}
-                    </span>
-                    <FaHandPointUp className={`text-2xl animate-bounce ${theme === "light" ? "text-gray-950 hover:underline hover:text-red-600" : "text-gray-100 hover:underline hover:text-amber-300"}`} />
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-
-
-        </div>
-      </section>
-    </>
+      </div>
+    </header>
   );
 };
 
-export default Home;
+
+export default Home

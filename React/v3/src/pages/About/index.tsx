@@ -16,23 +16,25 @@ const About = () => {
         </h2>
 
         <article className="flex flex-col gap-24">
-          {aboutSectionData(getLinkColor(theme), getStrongColor(theme)).map(({ id, title, content, image: { href, alt } = {} }, index) => {
-            const isReverse = index % 2 !== 0;
-            return (
-              <div key={id} className={`flex flex-col-reverse md:items-center md:gap-14 md:flex-row ${isReverse ? 'md:flex-row-reverse' : ''}`}>
-                {/* Texto */}
-                <div className={`flex-1 space-y-4 text-lg leading-relaxed ${getTextColor(theme)}`}>
-                  <h3 className="text-2xl font-semibold mb-2">{title[lang]}</h3>
-                  {content[lang]}
-                </div>
+          {aboutSectionData(getLinkColor(theme)).map(
+            ({ id, title, content, image: { href, alt } = {} }, index) => {
+              const isReverse = index % 2 !== 0;
+              return (
+                <div key={id} className={`flex flex-col-reverse md:flex-row md:gap-14 ${isReverse ? 'md:flex-row-reverse' : ''} md:items-center`}>
+                  {/* Texto: lo convierto en columna y lo centro verticalmente */}
+                  <div className={`flex-1 flex flex-col justify-center space-y-4 text-lg leading-relaxed ${getTextColor(theme)}`}>
+                    <h3 className="text-2xl font-semibold mb-2">{title[lang]}</h3>
+                    <div className="text-base">{content[lang]}</div>
+                  </div>
 
-                {/* Imagen */}
-                <div className="flex-shrink-0 mb-6 md:mb-0">
-                  {href && (<img src={href} alt={alt?.[lang]} loading="lazy" className="w-64 h-64 object-cover rounded-2xl shadow-md ring-1 ring-gray-300 dark:ring-white/10 bg-gray-100 dark:bg-gray-800 transition-transform duration-300 hover:scale-105" />)}
+                  {/* Imagen: tamaño fijo cuadrado, object-cover para no estirar, centrada */}
+                  <div className="flex-shrink-0 mb-6 md:mb-0 flex items-center justify-center">
+                    {href && (<img src={href} alt={alt?.[lang] ?? ''} loading="lazy" className="size-40 md:size-48 lg:size-56 object-cover rounded-2xl shadow-md ring-1 ring-gray-300 transition-transform duration-300 hover:scale-105" />)}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
         </article>
       </div>
     </section>

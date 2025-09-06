@@ -1,5 +1,6 @@
-import { educationExperienceData } from "../../assets/data/pages/Experience/educationExperienceData";
-import { workExperienceData } from "../../assets/data/pages/Experience/workExperienceData";
+
+import educationExperienceData from "../../assets/data/pages/Experience/educationExperienceData";
+import workExperienceData from "../../assets/data/pages/Experience/workExperienceData";
 import { useLanguage } from "../context";
 
 const useExperienceData = () => {

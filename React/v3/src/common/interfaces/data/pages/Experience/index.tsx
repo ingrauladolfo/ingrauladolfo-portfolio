@@ -1,33 +1,25 @@
 interface Education {
-  id:number;
-  startDate: { es: string; en: string };
-  finishDate: { es: string; en: string };
-  status?: { es: string; en: string };
-  title: { es: string; en: string };
-  name: { es: string; en: string };
-  bootcamp: boolean;
-  type: { es: string; en: string };
-  links: {
-    id: string | number;
-    href: string;
-    name: { es: string; en: string };
-  }[];
-}
-interface Work {
-  id:number;
-  startDate:{es:string; en:string};
-  endDate?:{es:string; en:string};
-  title:{es:string; en:string};
-  company:{es:string; en:string};
-  typeWork:{es:string; en:string};
-  reasonLeaving?:{es:string; en:string};
-  description:{es:string; en:string};
-  workHere:boolean;
-  links?:{
-    id:number;
-    href:string;
-    alt:{es:string; en:string};
-  }[]
+  educationId: number;
+  educationType: { university?: boolean; bootcamp?: boolean };
+  educationTypeTitle: { university?: { es: string; en: string }; bootcamp?: { es: string; en: string }; };
+  educationDateRange: { university?: { startDate: { es: string; en: string }; finishDate: { es: string; en: string } }; bootcamp?: { startDate: { es: string; en: string }; finishDate: { es: string; en: string } }; };
+  educationName: { university?: { es: string; en: string }; bootcamp?: { es: string; en: string }; };
+  educationCourseName: { university?: { es: string; en: string }; bootcamp?: { es: string; en: string }; };
+  educationStatus: { university?: { es: string; en: string }; bootcamp?: { es: string; en: string }; };
+  educationDescription: { university?: { es: string; en: string }; bootcamp?: { es: string; en: string }; };
+  educationLinks: { university?: { id: number; href: string; name: { es: string; en: string }; }[]; bootcamp?: { id: number; href: string; name: { es: string; en: string }; }[]; };
 }
 
-export type{Education, Work}
+interface Work {
+  workId: number;
+  workDateRange: { startDate?: { es: string; en: string }; company?: { startDate: { es: string; en: string }; finishDate?: { es: string; en: string }; }; }
+  workPositionRole: { es?: string; en?: string; company?: { es: string; en: string }; };
+  workCompanyName: { es?: string; en?: string; company?: { es: string; en: string }; };
+  workDescription: { es?: string; en?: string; company?: { es: string; en: string }; };
+  workHere: boolean;
+  workReasonLeaving?:{ es: string; en: string };
+  workMode: { freelancer?:{es?: string; en?: string}; company?: { es: string; en: string }; };
+  workLinks?: { company?: { id: number; href: string; name: { es: string; en: string }; }[]; id?: number; href?: string; name?: { es: string; en: string }; }[];
+}
+
+export type { Education, Work }
