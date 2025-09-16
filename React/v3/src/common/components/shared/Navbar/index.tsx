@@ -12,7 +12,6 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
     const [cvDropdown, setCvDropdown] = useState(false);
-    const [mobileCvDropdown, setMobileCvDropdown] = useState(false);
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
     const [pvOpen, setPvOpen] = useState(false);
     const { toggleLang, lang } = useLanguage();
@@ -21,8 +20,7 @@ export default function Navbar() {
 
     const getFileName = (url: string) => {
         const baseName = url.split('/').pop()?.replace('.pdf', '') || 'file';
-        const langSuffix = lang === 'es' ? 'español' : 'english';
-        return `${baseName}-${langSuffix}.pdf`;
+        return `${baseName}.pdf`;
     };
 
     const handleViewCV = (href: string) => {
@@ -72,7 +70,7 @@ export default function Navbar() {
                                 </span>
                             </button>
                             {cvDropdown && (
-                                <div className={`absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
+                                <div className={`absolute  top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
                                     <a
                                         href={href}
                                         download={getFileName(href)}
@@ -86,7 +84,7 @@ export default function Navbar() {
                                     </a>
                                     <button
                                         onClick={() => handleViewCV(href)}
-                                        className={`block px-4 py-2 text-left w-full ${hoverBg}`}
+                                        className={`block md:hover:cursor-pointer px-4 py-2 text-left w-full ${hoverBg}`}
                                     >
                                         <div className="flex items-center gap-2 justify-start">
                                             <FaEye className="inline" />
@@ -168,53 +166,36 @@ export default function Navbar() {
                         ))}
                         <hr className={`border ${theme === 'light' ? 'border-gray-300' : 'border-gray-600'}`} />
                         {socialLinks.map(({ href, icon, title, isCV, onClick }) =>
-                            onClick ? (
-                                <button
-                                    key={title[lang]}
-                                    onClick={onClick}
-                                    className={`flex items-center hover:cursor-pointer text-sm ${socialText}`}
-                                >
-                                    {icon}
-                                    <span>{title[lang]}</span>
-                                </button>
-                            ) : isCV ? (
-                                <div key="cv-mobile" className="relative">
-                                    <button
-                                        onClick={() => setMobileCvDropdown(prev => !prev)}
-                                        className={`flex items-center text-sm ${socialText}`}
-                                    >
-                                        {icon}
-                                        <span className="flex items-center gap-1">
-                                            {title[lang]}
-                                            <FaChevronDown size={10} />
-                                        </span>
-                                    </button>
-                                    {mobileCvDropdown && (
-                                        <div className={`absolute top-full left-0 mt-2 w-32 border rounded shadow z-50 ${navBg}`}>
-                                           
-                                            <button
-                                                onClick={() => handleViewCV(href)}
-                                                className={`block px-4 py-2 text-left w-full ${hoverBg}`}
-                                            >
-                                                <div className="flex items-center gap-2 justify-start">
-                                                    <FaEye className="inline" />
-                                                    <span className="text-sm">{lang === 'es' ? 'Ver' : 'View'}</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
-                            ) : (
-                                <a
-                                    key={href}
-                                    href={href}
-                                    className={`flex items-center text-sm ${socialText}`}
-                                >
-                                    {icon}
-                                    <span>{title[lang]}</span>
-                                </a>
-                            )
-                        )}
+    onClick ? (
+        <button
+            key={title[lang]}
+            onClick={onClick}
+            className={`flex items-center hover:cursor-pointer text-sm ${socialText}`}
+        >
+            {icon}
+            <span>{title[lang]}</span>
+        </button>
+    ) : isCV ? (
+        <button
+            key="cv-mobile"
+            onClick={() => handleViewCV(href)}
+            className={`flex items-center text-sm ${socialText}`}
+        >
+            {icon}
+            <span>{lang === 'es' ? 'CV' : 'CV'}</span>
+        </button>
+    ) : (
+        <a
+            key={href}
+            href={href}
+            className={`flex items-center text-sm ${socialText}`}
+        >
+            {icon}
+            <span>{title[lang]}</span>
+        </a>
+    )
+)}
+
                     </div>
                 </div>
             )}

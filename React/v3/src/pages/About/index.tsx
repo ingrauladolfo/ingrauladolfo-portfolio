@@ -7,14 +7,18 @@ import { getLinkColor, getTextColor } from '../../assets/styles/pages/About';
 const About = () => {
   const { theme } = useTheme();
   const { lang } = useLanguage();
+  const t = aboutPageTitle[lang] || aboutPageTitle.en;
+
   return (
     <section className="min-h-screen py-16 w-full mx-auto lg:w-[740px] pb-32">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="mb-8 text-center text-3xl md:text-5xl font-bold flex items-center justify-center">
+        <h2 className="flex items-center font-semibold gap-x-4 text-5xl mb-8 text-center justify-center">
           <FaUser className={`mr-2 ${getTextColor(theme)}`} />
-          {aboutPageTitle[lang]}
+          {t.title}
         </h2>
-
+        <h3 className="flex items-center font-semibold gap-x-4 text-4xl mb-8 text-center justify-center">
+          {t.subtitle}
+        </h3>
         <article className="flex flex-col gap-24">
           {aboutSectionData(getLinkColor(theme)).map(
             ({ id, title, content, image: { href, alt } = {} }, index) => {

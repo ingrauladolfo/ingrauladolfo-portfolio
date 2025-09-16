@@ -33,7 +33,7 @@ export const getDataSocialLinksNavbar = (lang: 'en' | 'es') => {
       },
     },
     {
-      href: lang === 'en' ? '/cv/english/RATV.pdf' : '/cv/spanish/RATV.pdf',
+      href: lang === 'en' ? '/cv/english/Resume - Raúl Adolfo Torres Vargas.pdf' : '/cv/spanish/CV - Raúl Adolfo Torres Vargas.pdf',
       icon: <IoIosDocument className="mr-2" size={16} />,
       title: {
         en: 'Resume',
