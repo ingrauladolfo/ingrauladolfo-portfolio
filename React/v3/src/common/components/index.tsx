@@ -6,5 +6,6 @@ import Badge from "./Badge";
 import Footer from "./shared/Footer";
 import NotFound from "./shared/NotFound";
 import ParticleCanvas from "./shared/ParticleCanvas";
+import Tabs from "./shared/Tabs";
 import { SlickSlider } from "./SlickSlider";
-export { Navbar, PDFViewer, Loading, UnderConstruction, Badge, Footer, NotFound, SlickSlider, ParticleCanvas }
+export { Navbar, PDFViewer, Loading, UnderConstruction, Badge, Footer, NotFound, SlickSlider, ParticleCanvas, Tabs }

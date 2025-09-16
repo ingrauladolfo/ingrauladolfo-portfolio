@@ -37,9 +37,8 @@ const SlickSlider: FC<SliderProps> = ({ images, lang, theme }) => {
     ],
   };
 
-  const imageContainerClass = `flex items-center justify-center h-64 min-h-[10rem] max-h-[18rem] border-3 w-full rounded-lg overflow-hidden ${
-    theme === "dark" ? "bg-gray-100 border-amber-600 text-gray-950" : "bg-transparent border-red-600 text-gray-950"
-  }`;
+  const imageContainerClass = `flex items-center justify-center h-64 min-h-[10rem] max-h-[18rem] border-3 w-full rounded-lg overflow-hidden ${theme === "dark" ? "bg-gray-100 border-amber-600 text-gray-950" : "bg-transparent border-red-600 text-gray-950"
+    }`;
 
   const imageClass = "object-contain max-h-full max-w-full transition-all duration-300";
 
@@ -73,9 +72,8 @@ const SlickSlider: FC<SliderProps> = ({ images, lang, theme }) => {
                   <img src={img.src} alt={img.alt} loading="lazy" className={imageClass} />
                 </div>
                 <div
-                  className={`mt-2 text-lg text-center font-bold transition-opacity duration-300 ${
-                    theme === "dark" ? "text-gray-100" : "text-gray-950"
-                  } ${!isMobile ? (isHover ? "opacity-100" : "opacity-0 group-hover:opacity-100") : ""}`}
+                  className={`mt-2 text-lg text-center font-bold transition-opacity duration-300 ${theme === "dark" ? "text-gray-100" : "text-gray-950"
+                    } ${!isMobile ? (isHover ? "opacity-100" : "opacity-0 group-hover:opacity-100") : ""}`}
                 >
                   {img.title[lang]}
                 </div>
@@ -88,4 +86,4 @@ const SlickSlider: FC<SliderProps> = ({ images, lang, theme }) => {
   );
 };
 
-export{SlickSlider};
+export { SlickSlider };

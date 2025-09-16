@@ -1,5 +1,4 @@
 // src/components/Experience/ExperienceDetail.tsx
-
 import type { FC } from 'react'
 import usePaginationResponsive from '../../../common/hooks/usePaginationResponsive'
 import { IoIosSchool } from 'react-icons/io'
@@ -8,7 +7,7 @@ import type { ExperienceDetailProps } from '../../../common/interfaces/pages'
 import { getBaseCardClasses, getNameClasses, getTypeClasses, getVerticalLineColor } from '../../../assets/styles/pages/Experience'
 import { getButtonWebsiteLinks } from '../../../assets/styles/pages/Home'
 
-const ExperienceDetail: FC<ExperienceDetailProps> = ({ data, lang, theme }) => {
+const ExperienceDetail: FC<ExperienceDetailProps & { activeTab?: string }> = ({ data, lang, theme, activeTab }) => {
   const buttonWebsiteLinks = `relative overflow-hidden border z-10 transition-colors duration-300 before:absolute before:top-0 before:left-0 before:h-full before:w-0 before:z-[-1] before:transition-all before:duration-700 before:ease-in-out hover:before:w-full ${theme === 'dark'
     ? 'bg-gray-950 border-red-600 text-gray-100 hover:text-gray-950 hover:border-amber-600 before:bg-amber-300'
     : 'bg-gray-100 border-amber-300 text-gray-950 hover:text-gray-100 hover:border-red-600 before:bg-red-600'
@@ -20,10 +19,10 @@ const ExperienceDetail: FC<ExperienceDetailProps> = ({ data, lang, theme }) => {
   const normalizeLinks = (links?: any[]) => {
     if (!links?.length) return undefined
     const out: { id: number | string; href: string; name?: { [k: string]: string } }[] = []
-    links.forEach((l) => {
-      if (!l) return
+    links.forEach(l => {
+      if (!l) { return }
       if (Array.isArray(l)) {
-        l.forEach((li) => li && out.push(li))
+        l.forEach(li => li && out.push(li))
         return
       }
       if (l.company) {
@@ -34,7 +33,7 @@ const ExperienceDetail: FC<ExperienceDetailProps> = ({ data, lang, theme }) => {
         }
         return
       }
-      if (l.id && l.href) out.push(l)
+      if (l.id && l.href) {out.push(l)}
     })
     return out.length ? out : undefined
   }
@@ -80,7 +79,6 @@ const ExperienceDetail: FC<ExperienceDetailProps> = ({ data, lang, theme }) => {
                 {career}{status && <>&nbsp;({status})</>}
               </span>
             </h3>
-            
 
             <p className={`font-semibold mb-1 text-[.8em] md:text-[1.2em] ${theme === 'dark' ? 'text-red-300' : 'text-purple-600'
               }`}>
@@ -111,125 +109,130 @@ const ExperienceDetail: FC<ExperienceDetailProps> = ({ data, lang, theme }) => {
       )
     })
 
-  const renderWorkItems = () =>    visibleWork.map((item: any, idx: number) => {
-    console.log('visibleWork ',visibleWork)
-      const start = item.workDateRange?.startDate?.[lang] ?? item.workDateRange?.company?.startDate?.[lang] ?? ''
-      const end = item.workDateRange?.company?.finishDate?.[lang] ?? (item.workHere ? (lang === 'es' ? 'Actualidad' : 'Present') : '')
-      const title = item.workPositionRole?.[lang] ?? item.workPositionRole?.company?.[lang] ?? ''
-      const company = item.workCompanyName?.[lang] ?? item.workCompanyName?.company?.[lang] ?? ''
-      const description = item.workDescription?.[lang] ?? item.workDescription?.company?.[lang] ?? ''
-      const typeWork = item.workMode?.company?.[lang] ?? item.workMode?.freelancer?.[lang] ?? ''
-      const reasonLeaving = item.workReasonLeaving?.[lang] ?? item.workReasonLeaving?.company?.[lang] ?? ''
+  const renderWorkItems = () => visibleWork.map((item: any, idx: number) => {
+    const start = item.workDateRange?.startDate?.[lang] ?? item.workDateRange?.company?.startDate?.[lang] ?? ''
+    const end = item.workDateRange?.company?.finishDate?.[lang] ?? (item.workHere ? (lang === 'es' ? 'Actualidad' : 'Present') : '')
+    const title = item.workPositionRole?.[lang] ?? item.workPositionRole?.company?.[lang] ?? ''
+    const company = item.workCompanyName?.[lang] ?? item.workCompanyName?.company?.[lang] ?? ''
+    const description = item.workDescription?.[lang] ?? item.workDescription?.company?.[lang] ?? ''
+    const typeWork = item.workMode?.company?.[lang] ?? item.workMode?.freelancer?.[lang] ?? ''
+    const reasonLeaving = item.workReasonLeaving?.[lang] ?? item.workReasonLeaving?.company?.[lang] ?? ''
 
-      const isCurrent = item.workHere
-      const links = normalizeLinks(item.workLinks)
+    const isCurrent = item.workHere
+    const links = normalizeLinks(item.workLinks)
 
-      const renderCard = () => (
-        <div className="prose">
-          <div className={`${getBaseCardClasses(theme)} w-full sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl`}>
-            <div className={getTypeClasses(theme)}>
-              <span>{isCurrent ? (<FaCheck className="text-lg font-bold" />) : (<FaX className="text-lg font-bold" />)}</span>
-              {isCurrent ? (lang === 'es' ? 'Trabajo aquí' : 'I work here') : (lang === 'es' ? 'Ya no trabajo aquí' : 'No longer working here')}
-            </div>
-            <h3 className={getNameClasses(theme)}>{company}</h3>
-            <h3 className={`text-[0.8em] md:text-[1em] font-bold mb-2 ${theme === 'dark' ? 'text-red-600' : 'text-yellow-700'
-              }`}>
-              <span className="whitespace-normal break-words">
-                {title}{typeWork && <>&nbsp;({typeWork})</>}
-              </span>
-            </h3>
-            {!isCurrent && reasonLeaving && (
+    const renderCard = () => (
+      <div className="prose">
+        <div className={`${getBaseCardClasses(theme)} w-full sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl`}>
+          <div className={getTypeClasses(theme)}>
+            <span>{isCurrent ? (<FaCheck className="text-lg font-bold" />) : (<FaX className="text-lg font-bold" />)}</span>
+            {isCurrent ? (lang === 'es' ? 'Trabajo aquí' : 'I work here') : (lang === 'es' ? 'Ya no trabajo aquí' : 'No longer working here')}
+          </div>
+          <h3 className={getNameClasses(theme)}>{company}</h3>
+          <h3 className={`text-[0.8em] md:text-[1em] font-bold mb-2 ${theme === 'dark' ? 'text-red-600' : 'text-yellow-700'
+            }`}>
+            <span className="whitespace-normal break-words">
+              {title}{typeWork && <>&nbsp;({typeWork})</>}
+            </span>
+          </h3>
+          {!isCurrent && reasonLeaving && (
             <span
-              className={`mt-2 text-[0.7em] md:text-[1.2em] font-extrabold ${
-                theme === "dark" ? "text-sky-400" : "text-purple-800"
-              }`}
+              className={`mt-2 text-[0.7em] md:text-[1.2em] font-extrabold ${theme === "dark" ? "text-sky-400" : "text-purple-800"
+                }`}
             >
-             {lang === 'es' ? 'Motivo de salida' : 'Reason for leaving'}:&nbsp;{reasonLeaving}
+              {lang === 'es' ? 'Motivo de salida' : 'Reason for leaving'}:&nbsp;{reasonLeaving}
             </span>
           )}
-           
-            <p className={`font-semibold mb-1 text-[.8em] md:text-[1em] ${theme === 'dark' ? 'text-red-300' : 'text-purple-600'
-              }`}>
 
-              {start} - {end}
-            </p>
-            <p className={`font-semibold mb-1 text-[.8em] md:text-[1.2em] ${theme === 'dark' ? 'text-gray-100' : 'text-gray-950'
-              }`}>
-              {description}
-            </p>
-            {renderLinks(links)}
-          </div>
+          <p className={`font-semibold mb-1 text-[.8em] md:text-[1em] ${theme === 'dark' ? 'text-red-300' : 'text-purple-600'
+            }`}>
+
+            {start} - {end}
+          </p>
+          <p className={`font-semibold mb-1 text-[.8em] md:text-[1.2em] ${theme === 'dark' ? 'text-gray-100' : 'text-gray-950'
+            }`}>
+            {description}
+          </p>
+          {renderLinks(links)}
         </div>
+      </div>
 
-      )
+    )
 
-      const alignLeft = idx % 2 === 0
-      return (
-        <div key={item.workId ?? idx} className="grid grid-cols-9 items-start mb-12">
-          <div className="col-span-4">{alignLeft && renderCard()}</div>
-          <div className="col-span-1 flex flex-col items-center">
-            <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 ${theme === 'dark' ? 'bg-red-600' : 'bg-amber-300'
-              }`}>
-              <span className="text-sm font-semibold">{idx + 1}</span>
-            </div>
-            {idx < visibleWork.length - 1 && <div className="w-px flex-1 bg-gray-700 mt-1" />}
+    const alignLeft = idx % 2 === 0
+    return (
+      <div key={item.workId ?? idx} className="grid grid-cols-9 items-start mb-12">
+        <div className="col-span-4">{alignLeft && renderCard()}</div>
+        <div className="col-span-1 flex flex-col items-center">
+          <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 ${theme === 'dark' ? 'bg-red-600' : 'bg-amber-300'
+            }`}>
+            <span className="text-sm font-semibold">{idx + 1}</span>
           </div>
-          <div className="col-span-4">{!alignLeft && renderCard()}</div>
+          {idx < visibleWork.length - 1 && <div className="w-px flex-1 bg-gray-700 mt-1" />}
         </div>
-      )
-    })
+        <div className="col-span-4">{!alignLeft && renderCard()}</div>
+      </div>
+    )
+  })
+
+  const showEducation = !activeTab || activeTab === 'all' || activeTab === 'education'
+  const showWork = !activeTab || activeTab === 'all' || activeTab === 'work'
 
   return (
-    <div className={`w-full ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-100'}`}>
+    <div>
       {/* EDUCACIÓN */}
-      <div className="w-full px-6">
-        <h3 className="text-center text-2xl font-semibold mb-6">{data.education.title}</h3>
-        <section className="relative wrap overflow-hidden pt-10 pb-6">
-          <div className={`absolute left-1/2 top-0 h-full w-[2px] z-0 ${getVerticalLineColor(theme)}`} />
-          {renderEducationItems()}
-        </section>
-        {data.education.items.length > 1 && (
-          <div className="flex justify-center gap-4 mt-4">
-            {visibleEducation.length < data.education.items.length && (
-              <button onClick={loadMoreEducation} className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
-                <FaPlus />
-                {lang === 'es' ? 'Mostrar más' : 'Show more'}
-              </button>
-            )}
-            {visibleEducation.length > 1 && (
-              <button onClick={showLessEducation} className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
-                <FaMinus />
-                {lang === 'es' ? 'Mostrar menos' : 'Show less'}
-              </button>
-            )}
-          </div>
-        )}
-      </div>
+      {showEducation && (
+        <div className="w-full px-6">
+          <h3 className="text-center text-2xl font-semibold mb-6">{data.education.title}</h3>
+          <section className="relative wrap overflow-hidden pt-10 pb-6">
+            <div className={`absolute left-1/2 top-0 h-full w-[2px] z-0 ${getVerticalLineColor(theme)}`} />
+            {renderEducationItems()}
+          </section>
+          {data.education.items.length > 1 && (
+            <div className="flex justify-center gap-4 mt-4">
+              {visibleEducation.length < data.education.items.length && (
+                <button onClick={loadMoreEducation} className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
+                  <FaPlus />
+                  {lang === 'es' ? 'Mostrar más' : 'Show more'}
+                </button>
+              )}
+              {visibleEducation.length > 1 && (
+                <button onClick={showLessEducation} className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
+                  <FaMinus />
+                  {lang === 'es' ? 'Mostrar menos' : 'Show less'}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* EXPERIENCIA */}
-      <div className="w-full px-6 mt-12">
-        <h3 className="text-center text-2xl font-semibold mb-6">{data.work.title}</h3>
-        <section className="relative wrap overflow-hidden pt-10 pb-6">
-          <div className={`absolute left-1/2 top-0 h-full w-[2px] z-0  ${getVerticalLineColor(theme)}`} />
-          {renderWorkItems()}
-        </section>
-        {data.work.items.length > 2 && (
-          <div className="flex justify-center gap-4 mt-4">
-            {visibleWork.length < data.work.items.length && (
-              <button onClick={loadMoreWork} className={`flex items-center gap-2 px-6 py-3 rounded-full  font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
-                <FaPlus />
-                {lang === 'es' ? 'Mostrar más' : 'Show more'}
-              </button>
-            )}
-            {visibleWork.length > (data.work.items.length > 2 ? 2 : 0) && (
-              <button onClick={showLessWork} className={`flex items-center gap-2 px-6 py-3 rounded-full  font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
-                <FaMinus />
-                {lang === 'es' ? 'Mostrar menos' : 'Show less'}
-              </button>
-            )}
-          </div>
-        )}
-      </div>
+      {showWork && (
+        <div className="w-full px-6 mt-12">
+          <h3 className="text-center text-2xl font-semibold mb-6">{data.work.title}</h3>
+          <section className="relative wrap overflow-hidden pt-10 pb-6">
+            <div className={`absolute left-1/2 top-0 h-full w-[2px] z-0  ${getVerticalLineColor(theme)}`} />
+            {renderWorkItems()}
+          </section>
+          {data.work.items.length > 2 && (
+            <div className="flex justify-center gap-4 mt-4">
+              {visibleWork.length < data.work.items.length && (
+                <button onClick={loadMoreWork} className={`flex items-center gap-2 px-6 py-3 rounded-full  font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
+                  <FaPlus />
+                  {lang === 'es' ? 'Mostrar más' : 'Show more'}
+                </button>
+              )}
+              {visibleWork.length > (data.work.items.length > 2 ? 2 : 0) && (
+                <button onClick={showLessWork} className={`flex items-center gap-2 px-6 py-3 rounded-full  font-semibold transition ${getButtonWebsiteLinks(theme)}`}>
+                  <FaMinus />
+                  {lang === 'es' ? 'Mostrar menos' : 'Show less'}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

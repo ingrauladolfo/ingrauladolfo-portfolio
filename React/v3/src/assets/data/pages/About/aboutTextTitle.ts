@@ -1,8 +1,14 @@
-import type { MultilangText } from "../../../../common/interfaces/data/pages/About";
+import type { MultilangText } from "../../../../common/interfaces/data/pages/shared";
 
 const aboutPageTitle: MultilangText = {
-  es: "Acerca",
-  en: "About",
+ es: {
+    title: 'Acerca',
+    subtitle: 'Descubre quién soy y qué me impulsa',
+  },
+  en: {
+    title: 'About',
+    subtitle: 'Explore who I am and what drives me',
+  }, 
 };
 
 export { aboutPageTitle };

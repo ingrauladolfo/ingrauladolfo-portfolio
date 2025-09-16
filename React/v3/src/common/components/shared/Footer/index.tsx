@@ -9,7 +9,7 @@ const Footer = () => {
     const{lang} = useLanguage()
      const yearRange = useCurrentYear(2019);
   return (
-    <footer className={`w-full text-center text-balance font-extrabold py-4 ${theme=='dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'}`}>
+    <footer className={`mt-auto  w-full text-center text-balance font-extrabold py-4 ${theme=='dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-800'}`}>
       © {yearRange} ingrauladolfo. {translations.copy[lang]}
     </footer>
   )

@@ -10,9 +10,10 @@ const Loading = () => {
   const { lang } = useLanguage();  // Obtiene el idioma desde el contexto
   const { textLoading, spinnerLoading } = getThemeLoadingClasses(theme);
 
-  const matched = pathToTitle.find(p => p.path[lang] === pathname);
-  const title = matched ? matched.title[lang].split('|')[0].trim() : 'Error';
-console.log({title:title, matched:matched})
+const matched = pathToTitle.find(p =>
+  Object.values(p.path).includes(pathname)
+);
+  const title = matched ? matched.title[lang].split('|')[0].trim() : 'Error';  // Modificado para que diga "Error" si no hay coincidencia
   return (
     <div className={`flex flex-col items-center justify-center w-full h-screen gap-6 text-center ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-100'}`}>
       <div className={`w-12 h-12 border-4 rounded-full animate-spin ${spinnerLoading}`} />

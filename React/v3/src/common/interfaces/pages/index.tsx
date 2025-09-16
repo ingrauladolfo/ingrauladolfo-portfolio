@@ -15,5 +15,9 @@ interface ExperienceDetailProps {
   data: ExperienceData
   lang: 'es' | 'en'
   theme: 'dark' | 'light'
+  activeTab?: string
+  className?:string
 }
+
+
 export type { Section, ExperienceData, ExperienceDetailProps }

@@ -7,9 +7,9 @@ interface AboutSection {
     es: string;
     en: string;
   };
-  image:{
-    href:string;
-    alt:{es:string, en:string}
+  image: {
+    href: string;
+    alt: { es: string, en: string }
   }
   content: {
     es: ReactNode;
@@ -17,9 +17,6 @@ interface AboutSection {
   };
 }
 // src/common/interfaces/shared/MultilangText.ts
- interface MultilangText {
-  es: string;
-  en: string;
-}
 
-export type {AboutSection,MultilangText}
+
+export type { AboutSection }
