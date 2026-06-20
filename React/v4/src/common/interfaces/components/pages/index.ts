@@ -1,0 +1,3 @@
+import type { HeroImageProps, HeroContentProps } from "./Home";
+import type { CalendarProps, YearButtonProps, TooltipStateProps, LocalizedText, CertificationItem, CertificationsProps, AboutItemInterface, AboutSectionItemProps } from "./About";
+export type { HeroImageProps, HeroContentProps, CalendarProps, YearButtonProps, TooltipStateProps, LocalizedText, CertificationItem, CertificationsProps, AboutItemInterface, AboutSectionItemProps };

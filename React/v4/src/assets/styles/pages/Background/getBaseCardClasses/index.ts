@@ -1,0 +1,2 @@
+import type { ThemeType } from "@/common/interfaces";
+export const getBaseCardClasses = (theme: ThemeType): string => `rounded-lg shadow-xl md:px-6 md:py-6 px-4 py-4 ${theme === 'dark' ? 'bg-[#070713] text-[#d1d1d1] border-2 border-[#e7000b]' : 'bg-[#ffffff] text-[#d1d1d1] border-2 border-[#ffd230]'}`;

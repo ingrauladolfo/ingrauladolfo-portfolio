@@ -1,0 +1,1 @@
+export const getBaseButton = (): string => 'md:hover:cursor-pointer inline-flex justify-center items-center gap-1 md:gap-2 px-3 md:px-2 py-3 md:py-2 text-lg md:text-[1em] rounded-full font-semibold transition border-3 break-words max-w-full hover:cursor-pointer';

@@ -1,0 +1,40 @@
+/**
+ * /*--------------------------------------------------------------
+ * # Header
+ * --------------------------------------------------------------
+ *
+ * @format
+ */
+
+#header {
+	background: linear-gradient(90deg, #616d71, #393d42);
+	transition: all 0.5s;
+	z-index: 997;
+	height: 70px;
+}
+
+#header.fixed-top {
+	background: #191919;
+}
+
+#header .logo {
+	font-size: 30px;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+#header .logo a {
+	color: #fff;
+}
+
+#header .logo img {
+	max-height: 90px;
+}
+
+.scrolled-offset {
+	margin-top: 70px;
+}

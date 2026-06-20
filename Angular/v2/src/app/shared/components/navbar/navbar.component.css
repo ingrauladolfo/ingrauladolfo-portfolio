@@ -1,0 +1,19 @@
+
+.spacer{
+    flex: 1 1 auto;
+}
+mat-toolbar{
+    background: linear-gradient(90deg, #616d71,#393d42) !important;
+    position: fixed;
+    position: -webkit-fixed; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+button{
+    font-family: 'Bodoni Moda', serif;
+}
+button:hover{
+    background: linear-gradient(90deg, #616d71,#393d42) !important;
+    color: #f1f3f1;
+    font-family: 'Bodoni Moda', serif;
+}

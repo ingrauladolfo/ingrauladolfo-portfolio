@@ -1,0 +1,4 @@
+import { dataFooter, backgroundStatThemes } from "./components";
+import { menuItems, dataTypeWriting, textHome, aboutPageTitle, aboutSectionData, DEFAULT_MONTHS, DEFAULT_WEEKDAYS, categoryNames, skills, skillsData, skillsSlides, contactPageTitle, backgroundPageTitle, tabBackgroundLabels, educationBackgroundData, workBackgroundData, initialBackgroundData, certificationsData } from "./pages";
+import { pagesMap, pathToTitle } from "./routes";
+export { pagesMap, pathToTitle, menuItems, dataTypeWriting, textHome, aboutPageTitle, aboutSectionData, DEFAULT_MONTHS, DEFAULT_WEEKDAYS, dataFooter, categoryNames, skills, skillsData, skillsSlides, contactPageTitle, backgroundPageTitle, tabBackgroundLabels, educationBackgroundData, workBackgroundData, initialBackgroundData, backgroundStatThemes, certificationsData }

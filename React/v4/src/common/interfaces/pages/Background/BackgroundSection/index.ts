@@ -1,0 +1,1 @@
+export interface BackgroundSectionInterface<T> { title: string; items: T[]; color: string; }

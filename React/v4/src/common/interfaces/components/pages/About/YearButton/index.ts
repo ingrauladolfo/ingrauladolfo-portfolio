@@ -1,0 +1,1 @@
+export interface YearButtonProps { year: number; currentYear: number; onClick: () => void; className?: string; }

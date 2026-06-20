@@ -1,0 +1,2 @@
+import type { BackgroundDataShapeInterface } from "@/common/interfaces";
+export const initialBackgroundData: BackgroundDataShapeInterface = { education: { title: "", items: [] }, work: { title: "", items: [] } };

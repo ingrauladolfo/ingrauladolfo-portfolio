@@ -1,0 +1,3 @@
+import type { LocalizedStringType, ImageProps, SliderProps } from "./Skills";
+import type { BackgroundDataInterface, BackgroundDetailProps, BackgroundPageTitleType, BackgroundSectionInterface, BackgroundTimeLineTitleInterface } from "./Background";
+export type { LocalizedStringType, ImageProps, SliderProps, BackgroundDataInterface, BackgroundDetailProps, BackgroundPageTitleType, BackgroundSectionInterface, BackgroundTimeLineTitleInterface }

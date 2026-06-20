@@ -1,0 +1,1 @@
+export type TooltipStateProps = { date: string; count: number; left: number; top: number; } | null;

@@ -1,0 +1,1 @@
+export type LocalizedStringType = { en: string; es: string; };

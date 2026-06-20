@@ -1,0 +1,2 @@
+import type { LanguageContextInterface, ThemeType } from "@/common/interfaces/context";
+export interface ButtonPaginationProps { visibleCount: number; totalCount: number; isMobile: boolean; isExpanded: boolean; onLoadMore: () => void; onShowLess: () => void; theme: ThemeType; lang: LanguageContextInterface['lang']; initial: number; step: number; }

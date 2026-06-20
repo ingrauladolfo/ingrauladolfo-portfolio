@@ -1,0 +1,24 @@
+.background, mat-card{
+    background: linear-gradient(90deg, #616d71,#393d42);
+  }
+  .example-card {
+      max-width: 400px;
+    }
+    
+    .bloopers {
+      background-image: url('../../../../assets/images/companies/products-external-branches/tatich-studio/bloopers.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+  
+    }
+    a{
+      text-decoration: none;
+      background-color:#393d42;
+      color:#616d71;
+    }
+    a:hover{
+      background-color: #616d71;
+      text-decoration: none;
+      color:#393d42;
+    }

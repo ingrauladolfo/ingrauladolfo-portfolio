@@ -1,0 +1,1 @@
+export interface AboutContributionInterface { date: string; count: number; level: number; }

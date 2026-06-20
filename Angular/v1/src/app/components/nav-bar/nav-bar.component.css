@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
+.spacer{
+    flex: 1 1 auto;
+}
+mat-toolbar{
+    background: #393d42 !important;
+    position: fixed;
+    position: -webkit-fixed; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+button{
+    font-family: 'Bodoni Moda', serif;
+}
+button:hover{
+    background: #393d42 !important;
+    color: #f1f3f1;
+    font-family: 'Bodoni Moda', serif;
+}

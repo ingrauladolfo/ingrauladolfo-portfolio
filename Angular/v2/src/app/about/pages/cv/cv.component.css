@@ -1,0 +1,17 @@
+span, h3, strong{
+    color: #ffffff;
+}
+.is-primary{
+    background-color: transparent;
+    border: 1px solid #e04f5f !important;
+}
+.is-primary:hover{
+    background-color: #e04f5f !important;
+    border: none !important;
+}
+.my-paragraph{
+    color: #ffffff;
+}
+a, a:hover{
+    text-decoration: none;
+}

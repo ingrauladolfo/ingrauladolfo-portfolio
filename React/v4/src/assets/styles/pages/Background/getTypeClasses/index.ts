@@ -1,0 +1,2 @@
+import type { ThemeType } from "@/common/interfaces";
+export const getTypeClasses = (theme: ThemeType): string => `flex items-center gap-x-1 md:gap-x-2 text-[1em] md:text-[1.2em] font-bold mb-2 ${theme === 'dark' ? 'text-[#ffd230]' : 'text-[#e7000b]'}`;

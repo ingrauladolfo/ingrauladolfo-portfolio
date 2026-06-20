@@ -1,0 +1,16 @@
+@import "@fontsource-variable/onest";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+html {
+  font-family: "Onest Variable", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}

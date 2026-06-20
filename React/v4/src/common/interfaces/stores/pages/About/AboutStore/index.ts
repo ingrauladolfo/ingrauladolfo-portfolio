@@ -1,0 +1,2 @@
+import type { AboutContributionInterface } from "../AboutContribution";
+export interface AboutStoreInterface { years: string[]; contributions: AboutContributionInterface[]; fetchYears: () => Promise<void>; fetchContributions: (year: string) => Promise<void>; }

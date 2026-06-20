@@ -1,0 +1,2 @@
+import type { ThemeType } from "@/common/interfaces";
+export const getNameClasses = (theme: ThemeType): string => `font-semibold mb-1 text-sm md:text-base ${theme === 'dark' ? 'text-[#00c950]' : 'text-[#008236]'}`;

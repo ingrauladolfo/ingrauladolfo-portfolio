@@ -1,0 +1,10 @@
+import type { PathToTitle } from "@/common/interfaces";
+export const pathToTitle: PathToTitle[] = [
+    { path: { en: '/', es: '/' }, title: { en: "Home | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Inicio | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+    { path: { en: '/about', es: '/acerca' }, title: { en: "About | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Acerca | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+    { path: { en: '/background', es: '/trayectoria' }, title: { en: "Background | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Trayectoria | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+    { path: { en: '/projects', es: '/proyectos' }, title: { en: "Projects | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Proyectos | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+    { path: { en: '/skills', es: '/habilidades' }, title: { en: "Skills | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Habilidades | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+    { path: { en: '/contact', es: '/contacto' }, title: { en: "Contact | Portfolio of I.S.C. Raúl Adolfo Torres Vargas | Web Developer and Programmer with over 5 years of experience", es: "Contacto | Porfolio de I.S.C. Raúl Adolfo Torres Vargas | Desarrollador y Programador Web con más de 5 años de Experiencia", } },
+
+];

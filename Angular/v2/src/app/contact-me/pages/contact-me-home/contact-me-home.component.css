@@ -1,0 +1,39 @@
+.background{
+    background: linear-gradient(90deg, #616d71,#393d42) !important;
+}
+a, a:hover{
+    text-decoration: none;
+}
+
+.linkedin{
+    background: none;
+    border: none;
+}
+.linkedin:hover{
+    background: #2867B2;
+    border: none;
+}
+.gmail{
+    background: none;
+    border: none;
+}
+.gmail:hover{
+    background: #DB4437;
+    border: none;
+}
+.whatsapp{
+    background: none;
+    border: none;
+}
+.whatsapp:hover{
+    background: #4AC959;
+    border: none;
+}
+.github{
+    background: none;
+    border: none;
+}
+.github:hover{
+    background: #6e5494;
+    border: none;
+}

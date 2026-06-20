@@ -1,0 +1,9 @@
+export { default as ReactIcon } from "@/assets/icons/sections/Projects/Tech/ReactIcon.astro";
+export { default as ViteIcon } from "@/assets/icons/sections/Projects/Tech/ViteIcon.astro";
+export { default as NextJSIcon } from "@/assets/icons/sections/Projects/Tech/NextJSIcon.astro";
+export { default as TailwindIcon } from "@/assets/icons/sections/Projects/Tech/TailwindIcon.astro";
+export { default as styledComponentsIcon } from "@/assets/icons/sections/Projects/Tech/styledComponentsIcon.astro";
+export { default as CSS3Icon } from "@/assets/icons/sections/Projects/Tech/CSS3Icon.astro";
+export { default as JavaScriptIcon } from "@/assets/icons/sections/Projects/Tech/JavaScriptIcon.astro";
+export { default as HTMLIcon } from "@/assets/icons/sections/Projects/Tech/HTMLIcon.astro";
+export { default as BootstrapIcon } from "@/assets/icons/sections/Projects/Tech/BootstrapIcon.astro";

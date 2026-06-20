@@ -1,0 +1,1 @@
+export interface BackgroundTimeLineTitleInterface { educationType?: { university: string; bootcamp: string }; reasonLeaving?: string; isCurrent?: { workHere: string; notWorkHere: string; }; finishDate?: string; }

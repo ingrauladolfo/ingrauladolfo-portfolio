@@ -1,0 +1,82 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import ExperienceItem from "@/components/sections/Experience/ExperienceItem.astro";
+import StudiesItem from "@/components/sections/Experience/career-detailed/StudiesItem.astro";
+import LinkInline from "@/components/sections/Experience/LinkInline.astro";
+import RightArrowIcon from "@/assets/icons/sections/Experience/RightArrowIcon.astro";
+type tLang = (str: any) => any;
+const lang = getLangFromUrl(Astro.url);
+const t: tLang = useTranslations(lang);
+const { currentLocale } = Astro;
+const experienceTitle =
+  currentLocale === "en"
+    ? "My Professional Experience"
+    : "Mi experiencia profesional";
+const studiesTitle =
+  currentLocale === "en" ? "Where I studied?" : "¿Dónde estudié?";
+type Experience = {
+  title: string;
+  company: string;
+  description: string;
+  reasonLeaving?: string;
+  workHere: boolean;
+  link?: string;
+  link2?: string;
+  startDate: string;
+  finishDate?: string;
+};
+type Studies = {
+  startDate: string;
+  finishDate?: string;
+  title: string;
+  name: string;
+  bootcamp: boolean;
+  link: string;
+  status?: string;
+  type: string;
+};
+const EXP: Experience[] = t("exp");
+const EST: Studies[] = t("st");
+---
+
+<div class="grid gap-8 lg:grid-cols-2">
+  <ol
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
+      {studiesTitle}
+    </h3>
+    {
+      EST.map((school) => (
+        <li>
+          <StudiesItem {...school} />
+        </li>
+      ))
+    }
+  </ol>
+  <ol
+    class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
+  >
+    <h3 class="text-2xl text-center mt-10 mb-5 lg:mt-10 lg:mb-5">
+      {experienceTitle}
+    </h3>
+    {
+      EXP.slice(0, 3).map((experience) => (
+        <li>
+          <ExperienceItem {...experience} />
+        </li>
+      ))
+    }
+    <div class="flex justify-center items-center">
+      <LinkInline
+        href={currentLocale === "en"
+          ? "/en/career-detailed"
+          : "/career-detailed"}
+        class="flex items-center space-x-2 text-red-500 dark:text-yellow-200 dark:hover:text-red-300 hover:text-yellow-700"
+      >
+        {currentLocale === "en" ? "More experience" : "Más experiencia"}
+        <RightArrowIcon />
+      </LinkInline>
+    </div>
+  </ol>
+</div>
