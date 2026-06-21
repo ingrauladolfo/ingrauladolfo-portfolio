@@ -6,5 +6,4 @@ export type CertificationsProps = {
     certs: CertificationItem[];
     theme: ThemeType;
     lang: LanguageContextInterface['lang'];
-
 };

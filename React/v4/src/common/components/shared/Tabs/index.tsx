@@ -11,4 +11,3 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTab, labels, onChange, theme }
         </div>
     )
 }
-Mm8:lA0G1r5h

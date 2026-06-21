@@ -211,7 +211,7 @@ export const Skills: FC = () => {
         <div className="flex flex-col md:flex-row md:items-start md:gap-8">
             {/* TERMINAL (left on desktop, top on mobile) */}
             {!isClosed && !isMinimized && (
-                <div className={`${isFullScreen ? `fixed inset-0 z-[1000] rounded-none` : `w-full md:w-1/2`}`} role="dialog" aria-modal={isFullScreen ? "true" : "false"}>
+                <div className={`${isFullScreen ? `fixed inset-0 z-1000 rounded-none` : `w-full md:w-1/2`}`} role="dialog" aria-modal={isFullScreen ? "true" : "false"}>
                     <div className={`mx-auto rounded-2xl shadow-2xl overflow-hidden border p-1 ${theme === "dark" ? "bg-[#070713] border-[#d1d1d1]" : "bg-[#d1d1d1] border-gray-200"}`}>
                         <div className={`flex items-center justify-between px-4 py-3 ${theme === "dark" ? "bg-[#070713]" : "bg-[#d1d1d1]"}`} style={isFullScreen ? { position: "sticky", top: 0, zIndex: 60 } : {}}>
                             <div className="flex items-center gap-2">
@@ -229,7 +229,7 @@ export const Skills: FC = () => {
                             <div className="w-6" />
                         </div>
                         <div className={`${theme === 'dark' ? 'bg-[#070713]' : 'bg-[#d1d1d1]'} p-6 font-mono text-[1.6rem] leading-relaxed`} style={isFullScreen ? { height: "calc(100vh - 56px)", overflow: "auto" } : { maxHeight: "calc(100vh - 180px)", overflow: "auto" }}>
-                            <pre className={`m-0 whitespace-pre-wrap break-words ${theme === 'dark' ? 'text-[#d1d1d1]' : 'text-[#070713]'}`}>
+                            <pre className={`m-0 whitespace-pre-wrap wrap-break-word ${theme === 'dark' ? 'text-[#d1d1d1]' : 'text-[#070713]'}`}>
                                 {terminalLines.map((_, i) => {
                                     const lineText = displayedLines[i] || "";
                                     const isActive = i === displayedLines.length - 1 && !isDone;
@@ -296,7 +296,7 @@ export const Skills: FC = () => {
                         </div>
                         {/* fixed tooltip */}
                         {tooltip.visible && (
-                            <div className="fixed z-[9999] pointer-events-none" style={{ left: tooltip.left, top: tooltip.top, transform: "translate(-50%, -120%)" }}>
+                            <div className="fixed z-9999 pointer-events-none" style={{ left: tooltip.left, top: tooltip.top, transform: "translate(-50%, -120%)" }}>
                                 <div className="relative">
                                     <div className="whitespace-nowrap rounded-lg bg-black/90 backdrop-blur-md px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/10 animate-[tooltipIn_0.2s_ease-out]">
                                         {tooltip.text}

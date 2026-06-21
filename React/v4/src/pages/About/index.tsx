@@ -1,24 +1,35 @@
-import { useLayoutEffect, useMemo, useRef, useState, useEffect } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useLanguage, useTheme } from "@/common/context";
 import { getLinkColor, getTextColor } from "@/assets/styles";
 import { Calendar, ScrollToTopButton, AboutSectionItem } from '@/common/components';
 import { FaUser } from "react-icons/fa6";
 import { aboutPageTitle, aboutSectionData, certificationsData } from "@/assets/data";
 import { Certifications } from "@/common/components/pages/About/Certifications";
+import type { CertificationItem, certificationsDataInterface } from "@/common/interfaces";
 export const About = () => {
     const { theme } = useTheme();
     const { lang } = useLanguage();
     const titleRef = useRef<HTMLHeadingElement>(null);
+    const certifications: certificationsDataInterface[] = certificationsData;
     const [showScrollTop, setShowScrollTop] = useState(false);
     const t = aboutPageTitle[lang] || aboutPageTitle.en;
     const [openIds, setOpenIds] = useState<Record<number, boolean>>({});
     const toggle = (id: number) => setOpenIds(prev => ({ ...prev, [id]: !prev[id] }));
     const memoizedAboutSectionData = useMemo(() => aboutSectionData(getLinkColor(theme)), [theme]);
-    const certs = certificationsData[lang as keyof typeof certificationsData] || certificationsData.en;
-    // Animación de entrada para las tarjetas
+    const certs: CertificationItem[] = certificationsData.map((cert) => ({
+        id: cert.certificationsId,
+        title: cert.certificationsTitle[lang],
+        issuer: cert.certificationsBuildingName[lang],
+        startDate: cert.certificationsStartDate[lang],
+        finishDate: cert.certificationsFinishDate?.[lang],
+        expiryDate: cert.certificationsExpiryDate?.[lang],
+        type: cert.certificationsType[lang],
+        pdfUrl: cert.certificationsPdfUrl,
+        icon: cert.certificationsIcon,
+    }));    // Animación de entrada para las tarjetas
     const [visibleCards, setVisibleCards] = useState<number[]>([]);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-    useEffect(() => { const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { const id = Number(entry.target.getAttribute("data-id")); if (entry.isIntersecting && !visibleCards.includes(id)) { setVisibleCards((prev) => [...prev, id]); } }); }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }); cardsRef.current.forEach((card) => { if (card) { observer.observe(card); } }); return () => observer.disconnect(); }, [visibleCards]);
+    useLayoutEffect(() => { const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { const id = Number(entry.target.getAttribute("data-id")); if (entry.isIntersecting && !visibleCards.includes(id)) { setVisibleCards((prev) => [...prev, id]); } }); }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }); cardsRef.current.forEach((card) => { if (card) { observer.observe(card); } }); return () => observer.disconnect(); }, [visibleCards]);
     useLayoutEffect(() => { const handleScroll = () => { setShowScrollTop(window.scrollY > 200); }; handleScroll(); window.addEventListener('scroll', handleScroll); return () => window.removeEventListener('scroll', handleScroll); }, []);
     const scrollToTitle = () => { titleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     // Textos según idioma

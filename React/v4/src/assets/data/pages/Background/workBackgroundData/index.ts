@@ -16,11 +16,24 @@ export const workBackgroundData: WorkDataInterface[] = [
     workId: 2,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
+    workStartDate: { es: "16/06/2026", en: "06/16/2026" },
+    workPositionRoleName: { es: "Desarrollador de software", en: "Software developer" },
+    workBuildingName: { es: "Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU)", en: "Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU)" },
+    workDescription: { es: "Encargado de la migración del Sistema Integral para la Gestión de Información Registral y Catastral (SIGIRC) para la Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU)", en: "Responsible for the migration of the Comprehensive System for the Management of Registry and Cadastral Information (SIGIRC) for the Secretariat of Agrarian, Territorial and Urban Development (SEDATU)" },
+    workStatus: { es: "Vigente", en: "Ongoing" },
+    workStatusCompleted: false,
+    workMode: { es: "Híbrido", en: "Hybrid" },
+    workLinks: [{ id: 1, href: "https://sistemas.sedatu.gob.mx/rppc/sigirc/", name: { es: "Sistema Integral para la Gestión de Información Registral y Catastral (SIGIRC).", en: "Sistema Integral para la Gestión de Información Registral y Catastral (SIGIRC)." } }]
+  },
+  {
+    workId: 3,
+    workType: { company: true },
+    workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "13/10/2025", en: "10/13/2025" },
     workFinishDate: { es: "24/09/2025", en: "09/24/2025" },
     workPositionRoleName: { es: "Desarrollador frontend", en: "Frontend developer" },
     workBuildingName: { es: "LiPu by Traxión -  Asignado por ITPartners como consultor", en: "LiPu by Traxión - Assigned by ITPartners as a consultant" },
-    workDescription: { es: "Encargado del rediseño de la web app de Mecanix,que se encarga del mantenimiento de los vehículos empresariales mediante I.A.", en: "Responsible for the redesign of the Mecanix web app, which handles company vehicle maintenance using AI." },
+    workDescription: { es: "Encargado del rediseño de la web app de Mecanix, que se encarga del mantenimiento de los vehículos empresariales mediante I.A.", en: "Responsible for the redesign of the Mecanix web app, which handles company vehicle maintenance using AI." },
     workReasonLeaving: { es: "Culminación de contrato", en: "Contract completion" },
     workStatus: { es: "Antes", en: "Former" },
     workStatusCompleted: true,
@@ -28,7 +41,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://mecanix-e.com/", name: { es: "Mecanix-e", en: "Mecanix-e" } }]
   },
   {
-    workId: 3,
+    workId: 4,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "23/08/2024", en: "08/23/2024" },
@@ -43,7 +56,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://tienda-monedas-dev.admin-proyectocoinpro.com:80/portal-configuracion/", name: { es: "Tienda de Monedas", en: "CoinStore (Tienda de Monedas in Spanish)" } }, { id: 2, href: "https://portal.elektravales.com.mx/", name: { es: "Elektra Vales", en: "Elektra Vales" } }, { id: 3, href: "https://coin-pro.com.mx/", name: { es: "Coin Pro", en: "Coin Pro" } }]
   },
   {
-    workId: 4,
+    workId: 5,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "23/09/2022", en: "09/23/2022" },
@@ -57,7 +70,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workMode: { es: "Remoto", en: "Remote" }
   },
   {
-    workId: 5,
+    workId: 6,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "09/08/2022", en: "08/09/2022" },
@@ -72,7 +85,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://promoespacio.com.mx/sac/Login_local2.asp", name: { es: "Promo Espacio", en: "Promo Espacio" } }]
   },
   {
-    workId: 6,
+    workId: 7,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "11/01/2022", en: "01/11/2022" },
@@ -87,7 +100,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://www.onibex.com/content/39-plug-deliver", name: { es: "Fleter / Plug & Develiver", en: "Fleter / Plug & Deliver" }, }]
   },
   {
-    workId: 7,
+    workId: 8,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "01/10/2021", en: "10/01/2021" },
@@ -102,7 +115,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://hobbio.co/", name: { es: "Fenicia", en: "Fenicia" }, }]
   },
   {
-    workId: 8,
+    workId: 9,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "01/10/2021", en: "10/01/2021" },
@@ -116,7 +129,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workMode: { es: "Remoto", en: "Remote" },
   },
   {
-    workId: 9,
+    workId: 10,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "02/06/2021", en: "06/02/2021" },
@@ -131,7 +144,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://rsviajes.com/", name: { es: "RS Viajes", en: "RS Viajes" } }]
   },
   {
-    workId: 10,
+    workId: 11,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "22/07/2020", en: "07/22/2020" },
@@ -146,7 +159,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "https://rompopecarmelita.com/", name: { es: "Rompope Carmelita", en: "Rompope Carmelita" } }, { id: 2, href: "https://robemex.com/", name: { es: "ROBEMEX", en: "ROBEMEX" } }]
   },
   {
-    workId: 11,
+    workId: 12,
     workType: { freelancer: true },
     workTypeName: { es: 'Consultor', en: 'Freelancer' },
     workStartDate: { es: "16/04/2020", en: "04/16/2020" },
@@ -160,7 +173,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workMode: { es: "Remoto", en: "Remote" },
   },
   {
-    workId: 12,
+    workId: 13,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "06/05/2019", en: "05/06/2019" },
@@ -175,7 +188,7 @@ export const workBackgroundData: WorkDataInterface[] = [
     workLinks: [{ id: 1, href: "http://www.gagsa.mx/", name: { es: "GAGSA", en: "GAGSA" } }, { id: 2, href: "https://www.comoplast.com.mx/", name: { es: "COMOPLAST", en: "COMOPLAST" } }]
   },
   {
-    workId: 13,
+    workId: 14,
     workType: { company: true },
     workTypeName: { es: 'Empresa', en: 'Company' },
     workStartDate: { es: "05/01/2019", en: "01/05/2019" },
